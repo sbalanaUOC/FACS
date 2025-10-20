@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 
 
-public class Mainvista {
+public class Vista {
 
     private Scanner sc;
 
-    public Mainvista() {
+    public Vista() {
         this.sc = new Scanner(System.in);
     }
 

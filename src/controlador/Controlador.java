@@ -1,16 +1,17 @@
 package controlador;
 
-import modelo.Mainmodelo;
-import vista.Mainvista;
+import modelo.Modelo;
+import vista.Vista;
 
-public class Maincontrolador {
-    private Mainmodelo modelo;
-    private Mainvista vista;
+public class Controlador {
+
+    private Modelo modelo;
+    private Vista vista;
 
 
-    public Maincontrolador(Mainmodelo inmodelo, Mainvista invista) {
-        this.modelo = inmodelo;
-        this.vista = invista;
+    public Controlador(Modelo modelo, Vista vista) {
+        this.modelo = modelo;
+        this.vista = vista;
     }
 
 

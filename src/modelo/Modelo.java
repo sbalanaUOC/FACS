@@ -1,13 +1,11 @@
 package modelo;
 
-import java.util.ArrayList;
-
-public class Mainmodelo {
+public class Modelo {
     private OnlineStore store;
 
 
 
-    public Mainmodelo(OnlineStore store) {this.store = store;}
+    public Modelo(OnlineStore store) {this.store = store;}
 
 
 
