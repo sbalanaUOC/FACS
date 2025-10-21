@@ -6,6 +6,9 @@ import vista.Vista;
 public class Controlador {
 
     private Modelo modelo;
+
+
+
     private Vista vista;
 
 
@@ -13,6 +16,27 @@ public class Controlador {
         this.modelo = modelo;
         this.vista = vista;
     }
+
+
+
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
+    public Vista getVista() {
+        return vista;
+    }
+
+    public void setVista(Vista vista) {
+        this.vista = vista;
+    }
+
+
 
 
     // Métodos que conectan vista y modelo
@@ -28,14 +52,14 @@ public class Controlador {
 
     private void procesarOpcionPrincipal(int opcion) {
         switch (opcion) {
-            case 1:
-                vista.mostrarMenuArticulos();
+            case 11:
+
                 break;
-            case 2:
-                vista.mostrarMenuClientes();
+            case 12:
+
                 break;
             case 3:
-                vista.mostrarMenuPedidos();
+
                 break;
             case 0:
                 System.out.println("Fin del programa.");
