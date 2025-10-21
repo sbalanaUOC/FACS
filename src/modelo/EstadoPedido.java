@@ -5,9 +5,8 @@
 package modelo;
 
 /**
- *
- * @author mulir
+ * @author Salva
  */
-class EstadoPedidos {
-    
+public enum EstadoPedido {
+    Pendiente, Finalizado;
 }
