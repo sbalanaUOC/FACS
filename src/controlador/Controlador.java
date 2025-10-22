@@ -54,6 +54,7 @@ public class Controlador {
         switch (opcion) {
             case 11:
                 //  opcion Añadir artículo
+                vista.AñadirClientes();
                 break;
             case 12:
                   //  opcion Mostrar articulos
