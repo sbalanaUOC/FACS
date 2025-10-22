@@ -4,13 +4,17 @@ import java.util.ArrayList;
 public class OnlineStore {
 
     // Atributos
-    private ArrayList<Cliente> listadoClientes;
+    private static ArrayList<Cliente> listadoClientes;
+    private static ArrayList<ClienteEstandar> listadoClienteEstandar;
+    private static ArrayList<ClientePremium> listadoClientePremium;
     private ArrayList<Pedido> listadoPedidos;
     private ArrayList<Articulo> listadoArticulos;
 
     // Constructor
     public OnlineStore() {
         this.listadoClientes = new ArrayList<>();
+        this.listadoClienteEstandar = new ArrayList<>();
+        this.listadoClientePremium = new ArrayList<>();
         this.listadoPedidos = new ArrayList<>();
         this.listadoArticulos = new ArrayList<>();
     }
@@ -22,6 +26,22 @@ public class OnlineStore {
 
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
+    }
+
+    public ArrayList<ClienteEstandar> getListadoClienteEstandar() {
+        return listadoClienteEstandar;
+    }
+
+    public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
+        this.listadoClienteEstandar = listadoClienteEstandar;
+    }
+
+    public ArrayList<ClientePremium> getListadoClientePremium() {
+        return listadoClientePremium;
+    }
+
+    public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
+        this.listadoClientePremium = listadoClientePremium;
     }
 
     public ArrayList<Pedido> getListadoPedidos() {
@@ -45,6 +65,8 @@ public class OnlineStore {
     public String toString() {
         return "OnlineStore {" +
                 "Clientes=" + listadoClientes.size() +
+                "Clientes Estandar=" + listadoClienteEstandar.size() +
+                "Clientes Premium=" + listadoClientePremium.size() +
                 ", Pedidos=" + listadoPedidos.size() +
                 ", Artículos=" + listadoArticulos.size() +
                 '}';
@@ -52,8 +74,16 @@ public class OnlineStore {
 
     //Funciones
     
-    public void añadirCliente(Cliente c) {
+    public static void añadirCliente(Cliente c) {
         listadoClientes.add(c);
+    }
+
+    public static void añadirClienteEstandar(ClienteEstandar cS) {
+        listadoClienteEstandar.add(cS);
+    }
+
+    public static void añadirClientePremium(ClientePremium cP) {
+        listadoClientePremium.add(cP);
     }
 
     public void mostrarClientes() {

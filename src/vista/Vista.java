@@ -1,9 +1,6 @@
 package vista;
 
-import modelo.Cliente;
-import modelo.Articulo;
-import modelo.ClienteEstandar;
-import modelo.ClientePremium;
+import modelo.*;
 
 
 import java.util.ArrayList;
@@ -91,6 +88,7 @@ public class Vista {
             cliente.setDomicilio(teclado.nextLine());
             System.out.print("Ingrese Nif del cliente: ");
             cliente.setNif(teclado.nextLine());
+            modelo.OnlineStore.añadirCliente(cliente);
             boolean salir = false;
             char opcion;
             do {
@@ -101,14 +99,14 @@ public class Vista {
                 switch (opcion) {
                     case '1':
                         ClienteEstandar estandar = new ClienteEstandar("", "", "","");
-                        c.add(estandar);
                         System.out.print("Cliente estandar registrado.");
+                        modelo.OnlineStore.añadirClienteEstandar(estandar);
                         salir = true;
                         break;
                     case '2':
                         ClientePremium premium = new ClientePremium("", "", "", "", 30, 0.2f);
-                        c.add(premium);
                         System.out.print("Cliente premium registrado.");
+                        modelo.OnlineStore.añadirClientePremium(premium);
                         salir = true;
                         break;
                     case '0':
@@ -121,6 +119,7 @@ public class Vista {
                 agregarMasClientes = false;
             }
         }
+        return null;
     }
 
         char clienteOpcionMenu21() {
@@ -146,16 +145,22 @@ public class Vista {
         }
     }
 
-    public void MostrarClientesStandard(){
+    public void MostrarClientesStandard(ArrayList<ClienteEstandar> estandar){
         System.out.println("\n------------------------");
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("\n------------------------");
+        for (ClienteEstandar cS : estandar) {
+            System.out.println(cS.getNombre() + " - " + cS.getDomicilio() + " - " + cS.getNif());
+        }
     }
 
-    public void MostrarClientesPremium() {
+    public void MostrarClientesPremium(ArrayList<ClientePremium> premium) {
         System.out.println("\n------------------------");
         System.out.println("24. Mostrar Clientes Premium");
         System.out.println("\n------------------------");
+        for (Cliente cP : premium) {
+            System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif());
+        }
     }
 
     public void MostrarPedidosPendientes(){

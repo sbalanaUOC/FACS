@@ -71,18 +71,20 @@ public class Controlador {
 
             case 22:
                 //  opcion   Mostrar clientes
-                   ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
-                   vista.MostrarClientes(clientes);
+                ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
+                vista.MostrarClientes(clientes);
                 break;
 
             case 23:
                 //  opcion   Mostrar Clientes Stándar
-                vista.MostrarClientesStandard();
+                ArrayList<modelo.ClienteEstandar> estandar = tienda.getListadoClienteEstandar();
+                vista.MostrarClientesStandard(estandar);
                 break;
 
             case 24:
                 //  opcion   Mostrar Clietes Premium
-                vista.MostrarClientesPremium();
+                ArrayList<modelo.ClientePremium> premium = tienda.getListadoClientePremium();
+                vista.MostrarClientesPremium(premium);
                 break;
 
             case 31:
