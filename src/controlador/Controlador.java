@@ -64,12 +64,8 @@ public class Controlador {
                 break;
             case 22:
                 //  opcion   Mostrar clientes
-                 ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
-
-                for (Cliente c : clientes) {
-                    System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif());
-                }
-                vista.MostrarClientes(clientes);
+                   ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
+                   vista.MostrarClientes(clientes);
                 break;
             case 23:
                 //  opcion   Mostrar Clientes Stándar
