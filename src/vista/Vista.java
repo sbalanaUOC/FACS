@@ -1,8 +1,10 @@
 package vista;
 
 import modelo.Cliente;
+import modelo.Articulo;
 import modelo.ClienteEstandar;
 import modelo.ClientePremium;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,6 +14,7 @@ import java.util.Scanner;
 public class Vista {
 
     private Scanner sc;
+    Scanner teclado = new Scanner(System.in);
 
     public Vista() {
         this.sc = new Scanner(System.in);
@@ -45,46 +48,65 @@ public class Vista {
     }
 
 
-    public void MostrarArticulos(){
+    //opcion 11
+    public Articulo InfoArticulo(){
+        Articulo articulo = new Articulo("","",0,0,0);
+        System.out.println("\nBienvenido al Menú de Añadir Articulo");
+        System.out.print("Ingrese el Codigo de la tienda: ");
+        articulo.setCodigo(teclado.nextLine());
+        System.out.print("Ingrese Descripcion del producto: ");
+        articulo.setDescripcion(teclado.nextLine());
+        System.out.print("Ingrese Precio de Venta: ");
+        articulo.setPrecioVenta(Float.parseFloat(teclado.nextLine()));
+        System.out.print("Ingrese Gastos de envio: ");
+        articulo.setGastosEnvio(Float.parseFloat(teclado.nextLine()));
+        System.out.print("Ingrese Tiempo de preparacion: ");
+        articulo.setTiempoPreparacion(Integer.parseInt(teclado.nextLine()));
+        return articulo;
+    }
+
+
+    //  menu 12
+    public void MostrarArticulos(ArrayList<Articulo> articulos){
         System.out.println("\n------------------------");
         System.out.println("12. Mostrar artículos");
         System.out.println("\n------------------------");
+        for (Articulo a : articulos) {
+            System.out.println(a.getCodigo() + " - " + a.getDescripcion() + " - " + a.getPrecioVenta()+ " - " + a.getGastosEnvio()+ " - " + a.getTiempoPreparacion());
+        }
     }
 
-    public void AñadirClientes() {
-        System.out.println("\n------------------------");
-        System.out.println("21. Añadir clientes");
-        System.out.println("\n------------------------");
+
+    //menu 21
+    public Cliente InfoCliente(){
         boolean agregarMasClientes = true;
         while (agregarMasClientes) {
+            Cliente cliente = new Cliente("","","","");
+            System.out.println("\nBienvenido al Menú de Añadir Cliente");
             System.out.print("Ingrese el email del cliente: ");
-            String email = sc.nextLine();
-            System.out.print("Ingrese el nombre del cliente: ");
-            String nombre = sc.nextLine();
-            System.out.print("Ingrese el domicilio del cliente: ");
-            String domicilio = sc.nextLine();
-            System.out.print("Ingrese el nif del cliente: ");
-            String nif = sc.nextLine();
-            System.out.print("Seleccione el tipo de cliente: \n");
+            cliente.setEmail(teclado.nextLine());
+            System.out.print("Ingrese Nombre del cliente: ");
+            cliente.setNombre(teclado.nextLine());
+            System.out.print("Ingrese Domicilio: ");
+            cliente.setDomicilio(teclado.nextLine());
+            System.out.print("Ingrese Nif del cliente: ");
+            cliente.setNif(teclado.nextLine());
             boolean salir = false;
-            char opción;
+            char opcion;
             do {
                 System.out.println("1. Estandar");
                 System.out.println("2. Premium");
                 System.out.println("0. Cancelar la adición del cliente");
-                opción = clienteOpciónMenu21();
-                switch (opción) {
+                opcion = clienteOpcionMenu21();
+                switch (opcion) {
                     case '1':
-                        ClienteEstandar estandar = new ClienteEstandar (email, nombre, domicilio, nif);
+                        ClienteEstandar estandar = new ClienteEstandar("", "", "","");
                         c.add(estandar);
-                        System.out.print("Cliente premium registrado.");
+                        System.out.print("Cliente estandar registrado.");
                         salir = true;
                         break;
                     case '2':
-                        System.out.print("Pagar cuota.");
-                        int cuota = Integer.parseInt(sc.nextLine());
-                        float descuento = Float.parseFloat((String.valueOf(0.2)));
-                        ClientePremium premium = new ClientePremium (email, nombre, domicilio, nif,cuota, descuento);
+                        ClientePremium premium = new ClientePremium("", "", "", "", 30, 0.2f);
                         c.add(premium);
                         System.out.print("Cliente premium registrado.");
                         salir = true;
@@ -94,13 +116,27 @@ public class Vista {
                 }
             } while (!salir);
             System.out.print("\n¿Desea añadir otro cliente? (Si/No): ");
-            String respuesta = sc.nextLine();
+            String respuesta = teclado.nextLine();
             if (!respuesta.equalsIgnoreCase("Si")) {
                 agregarMasClientes = false;
             }
         }
     }
 
+        char clienteOpcionMenu21() {
+            String resp;
+            System.out.print("Elige una opción (1,2 o 0): ");
+            resp = teclado.nextLine();
+            if (resp.isEmpty()) {
+                resp = "";
+            }
+            return resp.charAt(0);
+        }
+
+
+
+
+    //menu 22
     public void MostrarClientes(ArrayList<Cliente> clientes){
         System.out.println("\n------------------------");
         System.out.println("22. Mostrar clientes");
@@ -108,16 +144,6 @@ public class Vista {
         for (Cliente c : clientes) {
             System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif());
         }
-    }
-
-    char clienteOpciónMenu21() {
-        String resp;
-        System.out.print("Elige una opción (1,2 o 0): ");
-        resp = sc.nextLine();
-        if (resp.isEmpty()) {
-            resp = "";
-        }
-        return resp.charAt(0);
     }
 
     public void MostrarClientesStandard(){
