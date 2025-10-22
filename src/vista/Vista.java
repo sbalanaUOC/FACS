@@ -49,31 +49,23 @@ public class Vista {
     //opcion 11
 public Articulo InfoArticulo(){
     //
-
     Articulo articulo = new Articulo("","",0,0,0);
-
     System.out.println("\nBienvenido al Menú de Añadir Articulo");
-
     System.out.print("Ingrese el Codigo de la tienda: ");
     articulo.setCodigo(teclado.nextLine());
-
     System.out.print("Ingrese Descripcion del producto: ");
     articulo.setDescripcion(teclado.nextLine());
-
     System.out.print("Ingrese Precio de Venta: ");
     articulo.setPrecioVenta(Float.parseFloat(teclado.nextLine()));
-
     System.out.print("Ingrese Gastos de envio: ");
     articulo.setGastosEnvio(Float.parseFloat(teclado.nextLine()));
-
     System.out.print("Ingrese Tiempo de preparacion: ");
     articulo.setTiempoPreparacion(Integer.parseInt(teclado.nextLine()));
-
     return articulo;
     }
 
 
-//  menu 12
+    //  menu 12
     public void MostrarArticulos(ArrayList<Articulo> articulos){
         System.out.println("\n------------------------");
         System.out.println("12. Mostrar artículos");
@@ -81,8 +73,27 @@ public Articulo InfoArticulo(){
         for (Articulo a : articulos) {
             System.out.println(a.getCodigo() + " - " + a.getDescripcion() + " - " + a.getPrecioVenta()+ " - " + a.getGastosEnvio()+ " - " + a.getTiempoPreparacion());
         }
-
     }
+
+
+
+    //menu 21
+    public Cliente InfoCliente(){
+        //
+        Cliente cliente = new Cliente("","","","");
+        System.out.println("\nBienvenido al Menú de Añadir Cliente");
+        System.out.print("Ingrese el email del cliente: ");
+        cliente.setEmail(teclado.nextLine());
+        System.out.print("Ingrese Nombre del cliente: ");
+        cliente.setNombre(teclado.nextLine());
+        System.out.print("Ingrese Domicilio: ");
+        cliente.setDomicilio(teclado.nextLine());
+        System.out.print("Ingrese Nif del cliente: ");
+        cliente.setNif(teclado.nextLine());
+    return cliente;
+    }
+
+
 
 
     //menu 22

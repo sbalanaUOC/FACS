@@ -52,51 +52,61 @@ public class Controlador {
 
     private void procesarOpcionPrincipal(int opcion) {
         switch (opcion) {
+
             case 11:
                 //  opcion Añadir artículo
-                vista.InfoArticulo();
-
-
+                tienda.añadirArticulo(vista.InfoArticulo());
                 break;
+
             case 12:
                   //  opcion Mostrar articulos
                 ArrayList<modelo.Articulo> articulos = tienda.getListadoArticulos();
-
                 vista.MostrarArticulos(articulos);
                 break;
+
             case 21:
                 //  opcion Añadir cliente
+                tienda.añadirCliente(vista.InfoCliente());
                 break;
+
             case 22:
                 //  opcion   Mostrar clientes
                    ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
                    vista.MostrarClientes(clientes);
                 break;
+
             case 23:
                 //  opcion   Mostrar Clientes Stándar
                 vista.MostrarClientesStandard();
                 break;
+
             case 24:
                 //  opcion   Mostrar Clietes Premium
                 vista.MostrarClientesPremium();
                 break;
+
             case 31:
                 //  opcion    Añadir pedido
                 break;
+
             case 32:
                 //  opcion    Eliminar pedido
                 break;
+
             case 33:
                 //  opcion    Mostrar Pedidos pendientes
                 vista.MostrarPedidosPendientes();
                 break;
+
             case 34:
                 //  opcion    Mostrar Pedidos enviados
                 vista.MostrarPedidosEnviados();
                 break;
+
             case 0:
                 System.out.println("Fin del programa.");
                 break;
+
             default:
                 System.out.println("Opción no válida.");
                 break;
