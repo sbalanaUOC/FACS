@@ -54,10 +54,15 @@ public class Controlador {
         switch (opcion) {
             case 11:
                 //  opcion Añadir artículo
+                vista.InfoArticulo();
+
+
                 break;
             case 12:
                   //  opcion Mostrar articulos
-                vista.MostrarArticulos();
+                ArrayList<modelo.Articulo> articulos = tienda.getListadoArticulos();
+
+                vista.MostrarArticulos(articulos);
                 break;
             case 21:
                 //  opcion Añadir cliente
