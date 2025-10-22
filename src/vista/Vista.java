@@ -4,6 +4,8 @@ import modelo.Cliente;
 import modelo.Articulo;
 
 
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -78,20 +80,26 @@ public Articulo InfoArticulo(){
 
 
     //menu 21
-    public Cliente InfoCliente(){
-        //
-        Cliente cliente = new Cliente("","","","");
-        System.out.println("\nBienvenido al Menú de Añadir Cliente");
-        System.out.print("Ingrese el email del cliente: ");
-        cliente.setEmail(teclado.nextLine());
-        System.out.print("Ingrese Nombre del cliente: ");
-        cliente.setNombre(teclado.nextLine());
-        System.out.print("Ingrese Domicilio: ");
-        cliente.setDomicilio(teclado.nextLine());
-        System.out.print("Ingrese Nif del cliente: ");
-        cliente.setNif(teclado.nextLine());
-    return cliente;
-    }
+    //public void Cliente InfoCliente(){
+    //    //
+    //   System.out.println("\nBienvenido al Menú de Añadir Cliente");
+    //    System.out.print("Ingrese email del cliente: ");
+    //    String email = teclado.nextLine();
+    //    System.out.print("Ingrese su Nombre: ");
+    //    String nombre = teclado.nextLine();
+    //    System.out.print("Ingrese Domicilio: ");
+    //    String domicilio = teclado.nextLine();
+    //    System.out.print("Ingrese el numedo de identificacion (NIF): ");
+    //    String nif = teclado.nextLine();
+
+    //    System.out.println("¿Como lo quiere dar de alta? (1-Standard, 2-Premium)");
+    //    int tipo = sc.nextInt();
+    //    sc.nextLine(); // Limpieza del buffer
+    //    System.out.println("GENIAL!!  ESO ES TODO... El usuario ya se esta dando de alta");
+
+       // Controlador controlador = new Controlador();
+       // controlador.altaCliente(tipo, email, nombre, domicilio, nif);
+    //}
 
 
 
