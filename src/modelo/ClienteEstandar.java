@@ -1,6 +1,6 @@
 package modelo;
 
-public class ClienteEstandar extends Clientes {
+public class ClienteEstandar extends Cliente {
 
     public ClienteEstandar() {
         super();

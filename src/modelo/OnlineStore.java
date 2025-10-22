@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class OnlineStore {
 
     // Atributos
-    private ArrayList<Clientes> listadoClientes;
-    private ArrayList<Pedidos> listadoPedidos;
-    private ArrayList<Articulos> listadoArticulos;
+    private ArrayList<Cliente> listadoClientes;
+    private ArrayList<Pedido> listadoPedidos;
+    private ArrayList<Articulo> listadoArticulos;
 
     // Constructor
     public OnlineStore() {
@@ -16,29 +16,31 @@ public class OnlineStore {
     }
 
     // Getters y Setters
-    public ArrayList<Clientes> getListadoClientes() {
+    public ArrayList<Cliente> getListadoClientes() {
         return listadoClientes;
     }
 
-    public void setListadoClientes(ArrayList<Clientes> listadoClientes) {
+    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
     }
 
-    public ArrayList<Pedidos> getListadoPedidos() {
+    public ArrayList<Pedido> getListadoPedidos() {
         return listadoPedidos;
     }
 
-    public void setListadoPedidos(ArrayList<Pedidos> listadoPedidos) {
+    public void setListadoPedidos(ArrayList<Pedido> listadoPedidos) {
         this.listadoPedidos = listadoPedidos;
     }
 
-    public ArrayList<Articulos> getListadoArticulos() {
+    public ArrayList<Articulo> getListadoArticulos() {
         return listadoArticulos;
     }
 
-    public void setListadoArticulos(ArrayList<Articulos> listadoArticulos) {
+    public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
         this.listadoArticulos = listadoArticulos;
     }
+
+
     @Override
     public String toString() {
         return "OnlineStore {" +
@@ -50,12 +52,13 @@ public class OnlineStore {
 
     //Funciones
     
-    public void añadirCliente(Clientes c) {
-        
+    public void añadirCliente(Cliente c) {
+        listadoClientes.add(c);
     }
 
     public void mostrarClientes() {
-        
+
+        System.out.println("\n===== opcion mostrar clientes =====");
     }
 
     public void mostrarClientesEstandar() {
@@ -66,27 +69,27 @@ public class OnlineStore {
         
     }
 
-    public void añadirArticulo(Articulos a) {
-        
+    public void añadirArticulo(Articulo a) {
+        listadoArticulos.add(a);
     }
 
     public void mostrarArticulos() {
         
     }
 
-    public void añadirPedido(Pedidos p) {
-        
+    public void añadirPedido(Pedido p) {
+        listadoPedidos.add(p);
     }
 
     public void eliminarPedido(int num) {
         
     }
 
-    public void mostrarPedidosPendientes(Clientes cliente) {
+    public void mostrarPedidosPendientes(Cliente cliente) {
         
     }
 
-    public void mostrarPedidosEnviados(Clientes cliente) {
+    public void mostrarPedidosEnviados(Cliente cliente) {
         
     }
 }

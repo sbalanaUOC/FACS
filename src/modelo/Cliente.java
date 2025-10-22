@@ -1,7 +1,7 @@
 
 package modelo;
 
-public class Clientes {
+public class Cliente {
 
     //  Atributos 
     private String email;     
@@ -10,10 +10,10 @@ public class Clientes {
     private String nif;
 
     //  Constructores 
-    public Clientes() { // constructor vacío 
+    public Cliente() { // constructor vacío
     }
 
-    public Clientes(String email, String nombre, String domicilio, String nif) {
+    public Cliente(String email, String nombre, String domicilio, String nif) {
         this.email = email;
         this.nombre = nombre;
         this.domicilio = domicilio;

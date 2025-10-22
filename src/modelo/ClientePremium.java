@@ -1,7 +1,7 @@
 package modelo;
 
 
-public class ClientePremium extends Clientes {
+public class ClientePremium extends Cliente {
 
     private float cuota;        // a 30.0 €
     private float descuento;    // al 0.20 (20% sobre gastos de envío)
