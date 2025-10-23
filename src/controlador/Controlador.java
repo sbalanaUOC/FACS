@@ -29,12 +29,6 @@ public class Controlador {
     public void setVista(Vista vista) {this.vista = vista;}
 
 
-
-
-
-
-
-
     // Métodos que conectan vista y modelo
 
     public void iniciarPrograma() {
@@ -57,7 +51,7 @@ public class Controlador {
                 break;
             case 12:
                   //  opcion Mostrar articulos
-                vista.MostrarArticulos();
+
                 break;
             case 21:
                 //  opcion Añadir cliente
@@ -69,11 +63,11 @@ public class Controlador {
                 break;
             case 23:
                 //  opcion   Mostrar Clientes Stándar
-                vista.MostrarClientesStandard();
+
                 break;
             case 24:
                 //  opcion   Mostrar Clietes Premium
-                vista.MostrarClientesPremium();
+
                 break;
             case 31:
                 //  opcion    Añadir pedido
