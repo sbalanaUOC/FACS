@@ -63,8 +63,22 @@ public class Pedido {
 
 
     //  funciones
-    public void CalcularImporteTotal(){
+
+    // Importe total de pedido
+    public float CalcularImporteTotal() {
+        float precioVenta = articulo.getPrecioVenta();
+        float gastosEnvio = articulo.getGastosEnvio();
+
+        float total = precioVenta * cantidad + gastosEnvio;
+
+        if (cliente instanceof ClientePremium premium) {
+            float descuento = premium.calcularDescuentoEnvio(gastosEnvio);
+            total -= descuento;
+        }
+
+        return total;
     }
+
     public void CalcularPeridodoAnulacion(){
     }
 }

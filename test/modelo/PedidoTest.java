@@ -7,7 +7,7 @@ class PedidoTest {
 
     @Test
     void testCalcularImporteTotalClienteNormal() {
-        Cliente cliente = new Cliente("normal@mail.com", "Cliente Normal", "Calle Uno", "111A");
+        Cliente cliente = new Cliente("normal@gmail.com", "Cliente Normal", "Calle Uno", "111A");
         Articulo articulo = new Articulo("A01", "Tablero MDF", 100.0f, 10.0f, 3);
 
         Pedido pedido = new Pedido(1, cliente, articulo, 2, 20250101, EstadoPedido.Pendiente);
@@ -19,7 +19,7 @@ class PedidoTest {
 
     @Test
     void testCalcularImporteTotalClientePremium() {
-        ClientePremium premium = new ClientePremium("premium@mail.com", "Cliente Premium", "Calle Dos", "222B");
+        ClientePremium premium = new ClientePremium("premium@gmail.com", "Cliente Premium", "Calle Dos", "222B");
         Articulo articulo = new Articulo("A02", "Barniz", 50.0f, 20.0f, 2);
 
         Pedido pedido = new Pedido(2, premium, articulo, 1, 20250101, EstadoPedido.Pendiente);
