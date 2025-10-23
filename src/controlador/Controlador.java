@@ -1,5 +1,6 @@
 package controlador;
 
+import modelo.Articulo;
 import modelo.Modelo;
 import vista.Vista;
 
@@ -28,14 +29,14 @@ public class Controlador {
 
     private void procesarOpcionPrincipal(int opcion) {
         switch (opcion) {
-            case 1:
-                vista.mostrarMenuArticulos();
+            case 11:
+                vista.InfoArticulo();
                 break;
-            case 2:
-                vista.mostrarMenuClientes();
+            case 21:
+                vista.InfoCliente();
                 break;
-            case 3:
-                vista.mostrarMenuPedidos();
+            case 31:
+                vista.InfoPedido();
                 break;
             case 0:
                 System.out.println("Fin del programa.");
