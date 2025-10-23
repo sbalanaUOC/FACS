@@ -2,7 +2,6 @@ package vista;
 
 import modelo.*;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -74,7 +73,7 @@ public class Vista {
     }
 
 
-    //menu 21
+    // menu 21
     public void InfoCliente() {
         boolean agregarMasClientes = true;
         while (agregarMasClientes) {
@@ -94,8 +93,8 @@ public class Vista {
             do {
                 System.out.println("1. Estandar");
                 System.out.println("2. Premium");
-                System.out.println("0. Cancelar la adición del cliente");
-                opcion = clienteOpcionMenu21();
+                System.out.println("0. Cancelar");
+                opcion = OpcionMenu();
                 switch (opcion) {
                     case '1':
                         modelo.ClienteEstandar estandar = new modelo.ClienteEstandar(email, nombre, domicilio, nif);
@@ -121,20 +120,7 @@ public class Vista {
         }
     }
 
-    char clienteOpcionMenu21() {
-        String resp;
-        System.out.print("Elige una opción (1,2 o 0): ");
-        resp = teclado.nextLine();
-        if (resp.isEmpty()) {
-            resp = "";
-        }
-        return resp.charAt(0);
-    }
-
-
-
-
-    //menu 22
+    // menu 22
     public void MostrarClientes(ArrayList<Cliente> clientes){
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
@@ -148,6 +134,7 @@ public class Vista {
         }
     }
 
+    // menu 23
     public void MostrarClientesStandard(ArrayList<ClienteEstandar> estandar){
         if (estandar.isEmpty()) {
             System.out.println("No hay clientes registrados.");
@@ -161,6 +148,7 @@ public class Vista {
         }
     }
 
+    // menu 24
     public void MostrarClientesPremium(ArrayList<ClientePremium> premium) {
         if (premium.isEmpty()) {
             System.out.println("No hay clientes registrados.");
@@ -174,19 +162,33 @@ public class Vista {
         }
     }
 
+    // menu 31
+    public void InfoPedido(){
+    }
+
+    // menu 33
     public void MostrarPedidosPendientes(){
         System.out.println("\n------------------------");
         System.out.println("33. Mostrar Pedidos pendientes");
         System.out.println("\n------------------------");
     }
 
+    // menu 34
     public void MostrarPedidosEnviados(){
         System.out.println("\n------------------------");
         System.out.println("34. Mostrar Pedidos enviados");
         System.out.println("\n------------------------");
     }
 
-
+    char OpcionMenu() {
+        String resp;
+        System.out.print("Elige una opción (1,2 o 0): ");
+        resp = teclado.nextLine();
+        if (resp.isEmpty()) {
+            resp = "";
+        }
+        return resp.charAt(0);
+    }
 }
 
 

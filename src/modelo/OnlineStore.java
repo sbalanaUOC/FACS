@@ -92,11 +92,13 @@ public class OnlineStore {
     }
 
     public void mostrarClientesEstandar() {
-        
+
+        System.out.println("\n===== opcion mostrar clientes Estandar =====");
     }
 
     public void mostrarClientesPremium() {
-        
+
+        System.out.println("\n===== opcion mostrar clientes Premium =====");
     }
 
     public void añadirArticulo(Articulo a) {

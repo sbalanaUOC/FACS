@@ -1,22 +1,17 @@
 package controlador;
 
 import java.util.ArrayList;
-
-import modelo.Cliente;
 import modelo.EstadoPedido;
 import modelo.Modelo;
 import modelo.OnlineStore;
 import vista.Vista;
 
-
-
 public class Controlador {
-
-    private Modelo modelo;
-    private Vista vista;
 
     OnlineStore tienda= new OnlineStore();
 
+    private Modelo modelo;
+    private Vista vista;
 
     public Controlador(Modelo modelo, Vista vista) {
         this.modelo = modelo;
@@ -28,15 +23,7 @@ public class Controlador {
     public Vista getVista() {return vista;}
     public void setVista(Vista vista) {this.vista = vista;}
 
-
-
-
-
-
-
-
     // Métodos que conectan vista y modelo
-
     public void iniciarPrograma() {
         int opcion;
 
@@ -89,6 +76,7 @@ public class Controlador {
 
             case 31:
                 //  opcion    Añadir pedido
+                vista.InfoPedido();
                 break;
 
             case 32:
@@ -145,7 +133,4 @@ public class Controlador {
         tienda.añadirPedido(pedido2);
         tienda.añadirPedido(pedido3);
     }
-
-
-
 }
