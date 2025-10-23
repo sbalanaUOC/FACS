@@ -75,20 +75,20 @@ public class Vista {
 
 
     //menu 21
-    public Cliente InfoCliente(){
+    public void InfoCliente() {
         boolean agregarMasClientes = true;
         while (agregarMasClientes) {
-            Cliente cliente = new Cliente("","","","");
             System.out.println("\nBienvenido al Menú de Añadir Cliente");
             System.out.print("Ingrese el email del cliente: ");
-            cliente.setEmail(teclado.nextLine());
+            String email = teclado.nextLine();
             System.out.print("Ingrese Nombre del cliente: ");
-            cliente.setNombre(teclado.nextLine());
+            String nombre = teclado.nextLine();
             System.out.print("Ingrese Domicilio: ");
-            cliente.setDomicilio(teclado.nextLine());
+            String domicilio = teclado.nextLine();
             System.out.print("Ingrese Nif del cliente: ");
-            cliente.setNif(teclado.nextLine());
-            modelo.OnlineStore.añadirCliente(cliente);
+            String nif = teclado.nextLine();
+            modelo.Cliente cliente = new modelo.Cliente(email, nombre, domicilio, nif);
+            OnlineStore.añadirCliente(cliente);
             boolean salir = false;
             char opcion;
             do {
@@ -98,15 +98,15 @@ public class Vista {
                 opcion = clienteOpcionMenu21();
                 switch (opcion) {
                     case '1':
-                        ClienteEstandar estandar = new ClienteEstandar("", "", "","");
+                        modelo.ClienteEstandar estandar = new modelo.ClienteEstandar(email, nombre, domicilio, nif);
                         System.out.print("Cliente estandar registrado.");
-                        modelo.OnlineStore.añadirClienteEstandar(estandar);
+                        OnlineStore.añadirClienteEstandar(estandar);
                         salir = true;
                         break;
                     case '2':
-                        ClientePremium premium = new ClientePremium("", "", "", "", 30, 0.2f);
+                        modelo.ClientePremium premium = new modelo.ClientePremium(email, nombre, domicilio, nif, 30, 0.2f);
                         System.out.print("Cliente premium registrado.");
-                        modelo.OnlineStore.añadirClientePremium(premium);
+                        OnlineStore.añadirClientePremium(premium);
                         salir = true;
                         break;
                     case '0':
@@ -119,24 +119,27 @@ public class Vista {
                 agregarMasClientes = false;
             }
         }
-        return null;
     }
 
-        char clienteOpcionMenu21() {
-            String resp;
-            System.out.print("Elige una opción (1,2 o 0): ");
-            resp = teclado.nextLine();
-            if (resp.isEmpty()) {
-                resp = "";
-            }
-            return resp.charAt(0);
+    char clienteOpcionMenu21() {
+        String resp;
+        System.out.print("Elige una opción (1,2 o 0): ");
+        resp = teclado.nextLine();
+        if (resp.isEmpty()) {
+            resp = "";
         }
+        return resp.charAt(0);
+    }
 
 
 
 
     //menu 22
     public void MostrarClientes(ArrayList<Cliente> clientes){
+        if (clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
         System.out.println("\n------------------------");
         System.out.println("22. Mostrar clientes");
         System.out.println("\n------------------------");
@@ -146,6 +149,10 @@ public class Vista {
     }
 
     public void MostrarClientesStandard(ArrayList<ClienteEstandar> estandar){
+        if (estandar.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
         System.out.println("\n------------------------");
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("\n------------------------");
@@ -155,10 +162,14 @@ public class Vista {
     }
 
     public void MostrarClientesPremium(ArrayList<ClientePremium> premium) {
+        if (premium.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+            return;
+        }
         System.out.println("\n------------------------");
         System.out.println("24. Mostrar Clientes Premium");
         System.out.println("\n------------------------");
-        for (Cliente cP : premium) {
+        for (ClientePremium cP : premium) {
             System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif());
         }
     }
