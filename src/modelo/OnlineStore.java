@@ -61,6 +61,27 @@ public class OnlineStore {
     }
 
 
+    public ArrayList<Pedido> getListadoPedidosPendientes() {
+        ArrayList<Pedido> pendientes = new ArrayList<>();
+        for (Pedido p : listadoPedidos) {
+            if (p.getEstado().equals("Pendiente")) { // O si es boolean: if(p.isPendiente())
+                pendientes.add(p);
+            }
+        }
+        return pendientes;
+    }
+
+        public ArrayList<Pedido> getListadoPedidosFinalizados(){
+            ArrayList<Pedido> finalizados = new ArrayList<>();
+            for (Pedido p : listadoPedidos) {
+                if (p.getEstado().equals("Finalizado")) { // O si es boolean: if(p.isPendiente())
+                    finalizados.add(p);
+                }
+            }
+            return finalizados;
+        }
+
+
   //  @Override
   //  public String toString() {
     //      return "OnlineStore {" +

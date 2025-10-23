@@ -28,22 +28,22 @@ public class Pedido {
         this.numpedido = num_pedido;
     }
 
-    public Cliente getClientes() {return cliente; }
-    public void setClientes(Cliente clientes) {
+    public Cliente getCliente() {return cliente; }
+    public void setCliente(Cliente clientes) {
         this.cliente = cliente;
     }
 
-    public Articulo getArticulos() {
+    public Articulo getArticulo() {
         return articulo;
     }
-    public void setArticulos(Articulo articulos) {
+    public void setArticulo(Articulo articulos) {
         this.articulo = articulo;
     }
 
-    public int getCantidades() {
+    public int getCantidad() {
         return cantidad;
     }
-    public void setCantidades(int cantidades) {
+    public void setCantidad(int cantidades) {
         this.cantidad = cantidad;
     }
 

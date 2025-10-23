@@ -197,17 +197,27 @@ public class Vista {
     }
 
     // menu 33
-    public void MostrarPedidosPendientes(){
+    public void MostrarPedidosPendientes(ArrayList<Pedido> pendientes){
         System.out.println("\n------------------------");
         System.out.println("33. Mostrar Pedidos pendientes");
-        System.out.println("\n------------------------");
+        System.out.println("\n------33------------------");
+
+        for (Pedido p : pendientes) {
+            System.out.println(" num: "+p.getNum_pedido() + " / cliente: " + p.getCliente() + " / articulo: " + p.getArticulo()+ " / cantidad: " + p.getCantidad()+ " / fecha: " + p.getFecha()+ " / estado: " + p.getEstado());
+            System.out.println(" 33 ");
+        }
     }
 
     // menu 34
-    public void MostrarPedidosEnviados(){
+    public void MostrarPedidosEnviados(ArrayList<Pedido> finalizados){
         System.out.println("\n------------------------");
         System.out.println("34. Mostrar Pedidos enviados");
         System.out.println("\n------------------------");
+
+        for (Pedido f : finalizados) {
+            System.out.println(" num: "+f.getNum_pedido() + " / cliente: " + f.getCliente() + " / articulo: " + f.getArticulo()+ " / cantidad: " + f.getCantidad()+ " / fecha: " + f.getFecha()+ " / estado: " + f.getEstado());
+            System.out.println(" 34 ");
+        }
     }
 
     char OpcionMenu() {

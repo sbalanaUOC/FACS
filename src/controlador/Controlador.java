@@ -100,11 +100,17 @@ public class Controlador {
                 break;
             case 33:
                 //  opcion    Mostrar Pedidos pendientes
-                vista.MostrarPedidosPendientes();
+                vista.MostrarPedidosPendientes(tienda.getListadoPedidosPendientes());
                 break;
             case 34:
                 //  opcion    Mostrar Pedidos enviados
-                vista.MostrarPedidosEnviados();
+
+                vista.MostrarPedidosEnviados(tienda.getListadoPedidosFinalizados());
+            case 35:
+                //  opcion SECRETA    Mostrar Pedidos
+                vista.MostrarPedidosEnviados(tienda.getListadoPedidos());
+
+
                 break;
             case 0:
                 System.out.println("Fin del programa.");
