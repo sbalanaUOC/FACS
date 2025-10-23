@@ -4,13 +4,17 @@ import java.util.ArrayList;
 public class OnlineStore {
 
     // Atributos
-    private ArrayList<Cliente> listadoClientes;
+    private static ArrayList<Cliente> listadoClientes;
+    private static ArrayList<ClienteEstandar> listadoClienteEstandar;
+    private static ArrayList<ClientePremium> listadoClientePremium;
     private ArrayList<Pedido> listadoPedidos;
     private ArrayList<Articulo> listadoArticulos;
 
     // Constructor
     public OnlineStore() {
         this.listadoClientes = new ArrayList<>();
+        this.listadoClienteEstandar = new ArrayList<>();
+        this.listadoClientePremium = new ArrayList<>();
         this.listadoPedidos = new ArrayList<>();
         this.listadoArticulos = new ArrayList<>();
     }
@@ -22,6 +26,22 @@ public class OnlineStore {
 
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
+    }
+
+    public ArrayList<ClienteEstandar> getListadoClienteEstandar() {
+        return listadoClienteEstandar;
+    }
+
+    public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
+        this.listadoClienteEstandar = listadoClienteEstandar;
+    }
+
+    public ArrayList<ClientePremium> getListadoClientePremium() {
+        return listadoClientePremium;
+    }
+
+    public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
+        this.listadoClientePremium = listadoClientePremium;
     }
 
     public ArrayList<Pedido> getListadoPedidos() {
@@ -45,15 +65,25 @@ public class OnlineStore {
     public String toString() {
         return "OnlineStore {" +
                 "Clientes=" + listadoClientes.size() +
+                "Clientes Estandar=" + listadoClienteEstandar.size() +
+                "Clientes Premium=" + listadoClientePremium.size() +
                 ", Pedidos=" + listadoPedidos.size() +
                 ", Artículos=" + listadoArticulos.size() +
                 '}';
     }
 
     //Funciones
-    
-    public void añadirCliente(Cliente c) {
+
+    public static void añadirCliente(Cliente c) {
         listadoClientes.add(c);
+    }
+
+    public static void añadirClienteEstandar(ClienteEstandar cS) {
+        listadoClienteEstandar.add(cS);
+    }
+
+    public static void añadirClientePremium(ClientePremium cP) {
+        listadoClientePremium.add(cP);
     }
 
     public void mostrarClientes() {
@@ -62,11 +92,13 @@ public class OnlineStore {
     }
 
     public void mostrarClientesEstandar() {
-        
+
+        System.out.println("\n===== opcion mostrar clientes Estandar =====");
     }
 
     public void mostrarClientesPremium() {
-        
+
+        System.out.println("\n===== opcion mostrar clientes Premium =====");
     }
 
     public void añadirArticulo(Articulo a) {
@@ -74,7 +106,7 @@ public class OnlineStore {
     }
 
     public void mostrarArticulos() {
-        
+
     }
 
     public void añadirPedido(Pedido p) {
@@ -82,14 +114,14 @@ public class OnlineStore {
     }
 
     public void eliminarPedido(int num) {
-        
+
     }
 
     public void mostrarPedidosPendientes(Cliente cliente) {
-        
+
     }
 
     public void mostrarPedidosEnviados(Cliente cliente) {
-        
+
     }
 }
