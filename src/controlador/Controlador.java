@@ -29,12 +29,6 @@ public class Controlador {
     public void setVista(Vista vista) {this.vista = vista;}
 
 
-
-
-
-
-
-
     // Métodos que conectan vista y modelo
 
     public void iniciarPrograma() {
