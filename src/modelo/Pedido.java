@@ -63,6 +63,8 @@ public class Pedido {
 
 
     //  funciones
+
+    // Importe total de pedido
     public float CalcularImporteTotal() {
         float precioVenta = articulo.getPrecioVenta();
         float gastosEnvio = articulo.getGastosEnvio();
