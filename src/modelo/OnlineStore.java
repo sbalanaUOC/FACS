@@ -61,16 +61,16 @@ public class OnlineStore {
     }
 
 
-    @Override
-    public String toString() {
-        return "OnlineStore {" +
-                "Clientes=" + listadoClientes.size() +
-                "Clientes Estandar=" + listadoClienteEstandar.size() +
-                "Clientes Premium=" + listadoClientePremium.size() +
-                ", Pedidos=" + listadoPedidos.size() +
-                ", Artículos=" + listadoArticulos.size() +
-                '}';
-    }
+  //  @Override
+  //  public String toString() {
+    //      return "OnlineStore {" +
+    //              "Clientes=" + listadoClientes.size() +
+    //             "Clientes Estandar=" + listadoClienteEstandar.size() +
+    //              "Clientes Premium=" + listadoClientePremium.size() +
+    //            ", Pedidos=" + listadoPedidos.size() +
+    //            ", Artículos=" + listadoArticulos.size() +
+    //            '}';
+    //  }
 
     //Funciones
 
@@ -87,17 +87,14 @@ public class OnlineStore {
     }
 
     public void mostrarClientes() {
-
         System.out.println("\n===== opcion mostrar clientes =====");
     }
 
     public void mostrarClientesEstandar() {
-
         System.out.println("\n===== opcion mostrar clientes Estandar =====");
     }
 
     public void mostrarClientesPremium() {
-
         System.out.println("\n===== opcion mostrar clientes Premium =====");
     }
 
@@ -105,23 +102,14 @@ public class OnlineStore {
         listadoArticulos.add(a);
     }
 
-    public void mostrarArticulos() {
+    public void mostrarArticulos() {}
 
+    public void añadirPedido(Pedido p){listadoPedidos.add(p);
     }
 
-    public void añadirPedido(Pedido p) {
-        listadoPedidos.add(p);
-    }
+    public void eliminarPedido(int num) {}
 
-    public void eliminarPedido(int num) {
+    public void mostrarPedidosPendientes(Cliente cliente) {}
 
-    }
-
-    public void mostrarPedidosPendientes(Cliente cliente) {
-
-    }
-
-    public void mostrarPedidosEnviados(Cliente cliente) {
-
-    }
+    public void mostrarPedidosEnviados(Cliente cliente) {}
 }

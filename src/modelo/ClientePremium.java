@@ -36,12 +36,12 @@ public class ClientePremium extends Cliente {
         return gastosEnvio * descuento;
     }
 
-    @Override
-    public String toString() {
-        return "ClientePremium{" +
-                "cuota=" + cuota +
-                ", descuento=" + descuento +
-                ", " + super.toString() +
-                '}';
-    }
+  //  @Override
+  //  public String toString() {
+  //      return "ClientePremium{" +
+  //              "cuota=" + cuota +
+  //              ", descuento=" + descuento +
+  //              ", " + super.toString() +
+  //              '}';
+  //  }
 }

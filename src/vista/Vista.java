@@ -47,7 +47,10 @@ public class Vista {
     //opcion 11
     public Articulo InfoArticulo(){
         Articulo articulo = new Articulo("","",0,0,0);
+
+        System.out.println("\n------------------------");
         System.out.println("\nBienvenido al Menú de Añadir Articulo");
+        System.out.println("\n------------------------");
         System.out.print("Ingrese el Codigo de la tienda: ");
         articulo.setCodigo(teclado.nextLine());
         System.out.print("Ingrese Descripcion del producto: ");
@@ -65,7 +68,7 @@ public class Vista {
     //  menu 12
     public void MostrarArticulos(ArrayList<Articulo> articulos){
         System.out.println("\n------------------------");
-        System.out.println("12. Mostrar artículos");
+        System.out.println("12. Menu de Mostrar artículos");
         System.out.println("\n------------------------");
         for (Articulo a : articulos) {
             System.out.println(a.getCodigo() + " - " + a.getDescripcion() + " - " + a.getPrecioVenta()+ " - " + a.getGastosEnvio()+ " - " + a.getTiempoPreparacion());
@@ -73,8 +76,35 @@ public class Vista {
     }
 
 
+
+    public static String[] InfoCliente() {
+        Scanner teclado = new Scanner(System.in);
+        String[] datos = new String[5]; // array para almacenar los 5 valores
+
+        System.out.println("\n------------------------");
+        System.out.println("\nBienvenido al Menú de Añadir Cliente");
+        System.out.println("\n------------------------");
+        System.out.print("Ingrese el email del cliente: ");
+         datos[0]= teclado.nextLine();
+        System.out.print("Ingrese Nombre del cliente: ");
+         datos[1] = teclado.nextLine();
+        System.out.print("Ingrese Domicilio: ");
+         datos[2] = teclado.nextLine();
+        System.out.print("Ingrese Nif del cliente: ");
+         datos[3] = teclado.nextLine();
+        System.out.println("¿Como lo quiere dar de alta? (1-Standard, 2-Premium)");
+         datos[4] = teclado.nextLine();
+        //
+        System.out.println("GENIAL!!  ESO ES TODO... El usuario ya se esta dando de alta");
+
+        return datos;
+    }
+
+
+
+
     // menu 21
-    public void InfoCliente() {
+    public void InfoCliente2(){
         boolean agregarMasClientes = true;
         while (agregarMasClientes) {
             System.out.println("\nBienvenido al Menú de Añadir Cliente");
