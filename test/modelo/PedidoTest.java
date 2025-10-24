@@ -1,5 +1,6 @@
 package modelo;
 
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +11,7 @@ class PedidoTest {
         Cliente cliente = new Cliente("normal@gmail.com", "Cliente Normal", "Calle Uno", "111A");
         Articulo articulo = new Articulo("A01", "Tablero MDF", 100.0f, 10.0f, 3);
 
-        Pedido pedido = new Pedido(1, cliente, articulo, 2, 20250101, EstadoPedido.Pendiente);
+        Pedido pedido = new Pedido(1, cliente, articulo, 2, LocalDateTime.now(), EstadoPedido.Pendiente);
 
         float total = pedido.CalcularImporteTotal();
         // 100 * 2 + 10 = 210
@@ -22,7 +23,7 @@ class PedidoTest {
         ClientePremium premium = new ClientePremium("premium@gmail.com", "Cliente Premium", "Calle Dos", "222B");
         Articulo articulo = new Articulo("A02", "Barniz", 50.0f, 20.0f, 2);
 
-        Pedido pedido = new Pedido(2, premium, articulo, 1, 20250101, EstadoPedido.Pendiente);
+        Pedido pedido = new Pedido(2, premium, articulo, 1, LocalDateTime.now(), EstadoPedido.Pendiente);
 
         float total = pedido.CalcularImporteTotal();
         // Descuento = 20% de 20 = 4 → total = 50*1 + (20 - 4) = 66

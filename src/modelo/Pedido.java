@@ -8,16 +8,20 @@ public class Pedido {
     private Cliente cliente;
     private Articulo articulo;
     private int cantidad;
-    private int fecha;
+    private LocalDateTime fecha;
     private EstadoPedido estado;
 
-    public Pedido(int num_pedido, Cliente cliente, Articulo articulo, int cantidad, int fecha, EstadoPedido estado) {
+
+
+
+
+    public Pedido(int num_pedido, Cliente cliente, Articulo articulo, int cantidad, LocalDateTime fecha, EstadoPedido estado) {
         this.numpedido = num_pedido;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;
-        this.fecha = fecha;
-        this.estado = estado;
+        this.fecha = LocalDateTime.now();
+        this.estado = EstadoPedido.Pendiente;
     }
 
     //  getters y setters
@@ -47,10 +51,10 @@ public class Pedido {
         this.cantidad = cantidad;
     }
 
-    public int getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
-    public void setFecha(int fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 

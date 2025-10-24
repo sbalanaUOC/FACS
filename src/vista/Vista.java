@@ -51,7 +51,7 @@ public class Vista {
         System.out.println("\n------------------------");
         System.out.println("\nBienvenido al Menú de Añadir Articulo");
         System.out.println("\n------------------------");
-        System.out.print("Ingrese el Codigo de la tienda: ");
+        System.out.print("Ingrese el Codigo del producto: ");
         articulo.setCodigo(teclado.nextLine());
         System.out.print("Ingrese Descripcion del producto: ");
         articulo.setDescripcion(teclado.nextLine());
@@ -76,7 +76,7 @@ public class Vista {
     }
 
 
-
+    // menu 21
     public static String[] InfoCliente() {
         Scanner teclado = new Scanner(System.in);
         String[] datos = new String[5]; // array para almacenar los 5 valores
@@ -193,8 +193,43 @@ public class Vista {
     }
 
     // menu 31
-    public void InfoPedido(){
+    public void InfoPedido_old(){
     }
+
+
+    public static String[] InfoPedido() {
+        Scanner teclado = new Scanner(System.in);
+        String[] datos = new String[5]; // array para almacenar los 5 valores
+
+        System.out.println("\n------------------------");
+        System.out.println("\nBienvenido al Menú de Añadir Pedido");
+        System.out.println("\n------------------------");
+        System.out.print("Ingrese el email del cliente: ");
+        datos[0]= teclado.nextLine();
+        System.out.print("Ingrese Nombre del cliente: ");
+        datos[1] = teclado.nextLine();
+        System.out.print("Ingrese Domicilio: ");
+        datos[2] = teclado.nextLine();
+        System.out.print("Ingrese Nif del cliente: ");
+        datos[3] = teclado.nextLine();
+        System.out.println("¿Como lo quiere dar de alta? (1-Standard, 2-Premium)");
+        datos[4] = teclado.nextLine();
+        //
+        System.out.println("GENIAL!!  ESO ES TODO... El usuario ya se esta dando de alta");
+
+        return datos;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     // menu 33
     public void MostrarPedidosPendientes(ArrayList<Pedido> pendientes){

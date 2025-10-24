@@ -1,5 +1,6 @@
 package controlador;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.*;
 
@@ -139,9 +140,9 @@ modelo.Articulo articulo1 = new modelo.Articulo("art1 ","des1 ",111,11,1111);
 modelo.Articulo articulo2 = new modelo.Articulo("art2 ","des2 ",222,22,2222);
 modelo.Articulo articulo3 = new modelo.Articulo("art3 ","des3 ",333,33,3333);
 
-modelo.Pedido pedido1 = new modelo.Pedido(1,cliente1,articulo1,1,2007-12-01, EstadoPedido.Pendiente);
-modelo.Pedido pedido2 = new modelo.Pedido(2,cliente2,articulo2,2,2007-12-02,EstadoPedido.Pendiente);
-modelo.Pedido pedido3 = new modelo.Pedido(3,cliente3,articulo3,3,2007-12-03,EstadoPedido.Finalizado);
+modelo.Pedido pedido1 = new modelo.Pedido(1,cliente1,articulo1,1,LocalDateTime.now(), EstadoPedido.Pendiente);
+modelo.Pedido pedido2 = new modelo.Pedido(2,cliente2,articulo2,2,LocalDateTime.now(),EstadoPedido.Pendiente);
+modelo.Pedido pedido3 = new modelo.Pedido(3,cliente3,articulo3,3,LocalDateTime.now(),EstadoPedido.Finalizado);
 
         tienda.añadirArticulo(articulo1);
         tienda.añadirArticulo(articulo2);
