@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class OnlineStore {
 
+
     // Atributos
     private static ArrayList<Cliente> listadoClientes;
     private static ArrayList<ClienteEstandar> listadoClienteEstandar;
