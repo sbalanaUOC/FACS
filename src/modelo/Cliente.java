@@ -3,7 +3,7 @@ package modelo;
 public class Cliente {
 
     //  Atributos 
-    private String email;     
+    private String email;
     private String nombre;
     private String domicilio;
     private String nif;
@@ -56,10 +56,10 @@ public class Cliente {
     @Override
     public String toString() {
         return "Clientes{" +
-            "email='" + email + '\'' +
-            ", nombre='" + nombre + '\'' +
-            ", domicilio='" + domicilio + '\'' +
-            ", nif='" + nif + '\'' +
-            '}';
+                "email='" + email + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", domicilio='" + domicilio + '\'' +
+                ", nif='" + nif + '\'' +
+                '}';
     }
 }

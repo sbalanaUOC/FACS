@@ -61,19 +61,40 @@ public class OnlineStore {
     }
 
 
-    @Override
-    public String toString() {
-        return "OnlineStore {" +
-                "Clientes=" + listadoClientes.size() +
-                "Clientes Estandar=" + listadoClienteEstandar.size() +
-                "Clientes Premium=" + listadoClientePremium.size() +
-                ", Pedidos=" + listadoPedidos.size() +
-                ", Artículos=" + listadoArticulos.size() +
-                '}';
+    public ArrayList<Pedido> getListadoPedidosPendientes() {
+        ArrayList<Pedido> pendientes = new ArrayList<>();
+        for (Pedido p : listadoPedidos) {
+            if (p.getEstado().equals("Pendiente")) { // O si es boolean: if(p.isPendiente())
+                pendientes.add(p);
+            }
+        }
+        return pendientes;
     }
 
+        public ArrayList<Pedido> getListadoPedidosFinalizados(){
+            ArrayList<Pedido> finalizados = new ArrayList<>();
+            for (Pedido p : listadoPedidos) {
+                if (p.getEstado().equals("Finalizado")) { // O si es boolean: if(p.isPendiente())
+                    finalizados.add(p);
+                }
+            }
+            return finalizados;
+        }
+
+
+  //  @Override
+  //  public String toString() {
+    //      return "OnlineStore {" +
+    //              "Clientes=" + listadoClientes.size() +
+    //             "Clientes Estandar=" + listadoClienteEstandar.size() +
+    //              "Clientes Premium=" + listadoClientePremium.size() +
+    //            ", Pedidos=" + listadoPedidos.size() +
+    //            ", Artículos=" + listadoArticulos.size() +
+    //            '}';
+    //  }
+
     //Funciones
-    
+
     public static void añadirCliente(Cliente c) {
         listadoClientes.add(c);
     }
@@ -87,17 +108,14 @@ public class OnlineStore {
     }
 
     public void mostrarClientes() {
-
         System.out.println("\n===== opcion mostrar clientes =====");
     }
 
     public void mostrarClientesEstandar() {
-
         System.out.println("\n===== opcion mostrar clientes Estandar =====");
     }
 
     public void mostrarClientesPremium() {
-
         System.out.println("\n===== opcion mostrar clientes Premium =====");
     }
 
@@ -105,23 +123,14 @@ public class OnlineStore {
         listadoArticulos.add(a);
     }
 
-    public void mostrarArticulos() {
-        
+    public void mostrarArticulos() {}
+
+    public void añadirPedido(Pedido p){listadoPedidos.add(p);
     }
 
-    public void añadirPedido(Pedido p) {
-        listadoPedidos.add(p);
-    }
+    public void eliminarPedido(int num) {}
 
-    public void eliminarPedido(int num) {
-        
-    }
+    public void mostrarPedidosPendientes(Cliente cliente) {}
 
-    public void mostrarPedidosPendientes(Cliente cliente) {
-        
-    }
-
-    public void mostrarPedidosEnviados(Cliente cliente) {
-        
-    }
+    public void mostrarPedidosEnviados(Cliente cliente) {}
 }

@@ -10,12 +10,8 @@ public class ClienteEstandar extends Cliente {
         super(email, nombre, domicilio, nif);
     }
 
-    public float calcularDescuentoEnvio(float gastosEnvio) {
-        return 0.0f;
-    }
-
-    @Override
-    public String toString() {
-        return "ClienteEstandar{" + super.toString() + "}";
-    }
+  //  @Override
+  //  public String toString() {
+  //      return "ClienteEstandar{" + super.toString() + "}";
+  //  }
 }

@@ -1,3 +1,4 @@
+
 import modelo.Modelo;
 import vista.Vista;
 import controlador.Controlador;
@@ -10,5 +11,6 @@ Vista vista = new Vista();
 Controlador controlador = new Controlador(modelo, vista);
 
     controlador.iniciarPrograma();
+
 }
 
