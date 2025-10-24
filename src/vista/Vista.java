@@ -100,56 +100,6 @@ public class Vista {
         return datos;
     }
 
-
-
-
-    // menu 21
-    public void InfoCliente2(){
-        boolean agregarMasClientes = true;
-        while (agregarMasClientes) {
-            System.out.println("\nBienvenido al Menú de Añadir Cliente");
-            System.out.print("Ingrese el email del cliente: ");
-            String email = teclado.nextLine();
-            System.out.print("Ingrese Nombre del cliente: ");
-            String nombre = teclado.nextLine();
-            System.out.print("Ingrese Domicilio: ");
-            String domicilio = teclado.nextLine();
-            System.out.print("Ingrese Nif del cliente: ");
-            String nif = teclado.nextLine();
-            modelo.Cliente cliente = new modelo.Cliente(email, nombre, domicilio, nif);
-            OnlineStore.añadirCliente(cliente);
-            boolean salir = false;
-            char opcion;
-            do {
-                System.out.println("1. Estandar");
-                System.out.println("2. Premium");
-                System.out.println("0. Cancelar");
-                opcion = OpcionMenu();
-                switch (opcion) {
-                    case '1':
-                        modelo.ClienteEstandar estandar = new modelo.ClienteEstandar(email, nombre, domicilio, nif);
-                        System.out.print("Cliente estandar registrado.");
-                        OnlineStore.añadirClienteEstandar(estandar);
-                        salir = true;
-                        break;
-                    case '2':
-                        modelo.ClientePremium premium = new modelo.ClientePremium(email, nombre, domicilio, nif, 30, 0.2f);
-                        System.out.print("Cliente premium registrado.");
-                        OnlineStore.añadirClientePremium(premium);
-                        salir = true;
-                        break;
-                    case '0':
-                        salir = true;
-                }
-            } while (!salir);
-            System.out.print("\n¿Desea añadir otro cliente? (Si/No): ");
-            String respuesta = teclado.nextLine();
-            if (!respuesta.equalsIgnoreCase("Si")) {
-                agregarMasClientes = false;
-            }
-        }
-    }
-
     // menu 22
     public void MostrarClientes(ArrayList<Cliente> clientes){
         if (clientes.isEmpty()) {
@@ -192,38 +142,31 @@ public class Vista {
         }
     }
 
+
     // menu 31
-    public void InfoPedido_old(){
-    }
-
-
     public static String[] InfoPedido() {
         Scanner teclado = new Scanner(System.in);
-        String[] datos = new String[5]; // array para almacenar los 5 valores
+        String[] datospedido = new String[3]; // array para almacenar los 3 valores
 
         System.out.println("\n------------------------");
         System.out.println("\nBienvenido al Menú de Añadir Pedido");
         System.out.println("\n------------------------");
-        System.out.print("Ingrese el email del cliente: ");
-        datos[0]= teclado.nextLine();
-        System.out.print("Ingrese Nombre del cliente: ");
-        datos[1] = teclado.nextLine();
-        System.out.print("Ingrese Domicilio: ");
-        datos[2] = teclado.nextLine();
-        System.out.print("Ingrese Nif del cliente: ");
-        datos[3] = teclado.nextLine();
-        System.out.println("¿Como lo quiere dar de alta? (1-Standard, 2-Premium)");
-        datos[4] = teclado.nextLine();
+        System.out.print("Ingrese el nombre del cliente: ");
+        datospedido[0]= teclado.nextLine();
+        System.out.print("Ingrese articulo del pedido: ");
+        datospedido[1] = teclado.nextLine();
+        System.out.print("Ingrese la cantidad: ");
+        datospedido[2] = teclado.nextLine();
         //
-        System.out.println("GENIAL!!  ESO ES TODO... El usuario ya se esta dando de alta");
+        System.out.println("...Un momento por favor...");
 
-        return datos;
+        return datospedido;
     }
 
 
 
 
-
+    // menu 32
 
 
 
@@ -254,14 +197,17 @@ public class Vista {
             System.out.println(" 34 ");
         }
     }
+//
+//    char OpcionMenu() {
+//        String resp;
+//        System.out.print("Elige una opción (1,2 o 0): ");
+//        resp = teclado.nextLine();
+//        if (resp.isEmpty()) {
+//            resp = "";
+//        }
+//        return resp.charAt(0);
+//
+//    }
 
-    char OpcionMenu() {
-        String resp;
-        System.out.print("Elige una opción (1,2 o 0): ");
-        resp = teclado.nextLine();
-        if (resp.isEmpty()) {
-            resp = "";
-        }
-        return resp.charAt(0);
-    }
+
 }

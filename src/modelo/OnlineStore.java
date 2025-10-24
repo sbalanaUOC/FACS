@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class OnlineStore {
 
+
     // Atributos
     private static ArrayList<Cliente> listadoClientes;
     private static ArrayList<ClienteEstandar> listadoClienteEstandar;
@@ -23,7 +24,6 @@ public class OnlineStore {
     public ArrayList<Cliente> getListadoClientes() {
         return listadoClientes;
     }
-
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
     }
@@ -31,7 +31,6 @@ public class OnlineStore {
     public ArrayList<ClienteEstandar> getListadoClienteEstandar() {
         return listadoClienteEstandar;
     }
-
     public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
         this.listadoClienteEstandar = listadoClienteEstandar;
     }
@@ -39,7 +38,6 @@ public class OnlineStore {
     public ArrayList<ClientePremium> getListadoClientePremium() {
         return listadoClientePremium;
     }
-
     public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
         this.listadoClientePremium = listadoClientePremium;
     }
@@ -47,7 +45,6 @@ public class OnlineStore {
     public ArrayList<Pedido> getListadoPedidos() {
         return listadoPedidos;
     }
-
     public void setListadoPedidos(ArrayList<Pedido> listadoPedidos) {
         this.listadoPedidos = listadoPedidos;
     }
@@ -55,7 +52,6 @@ public class OnlineStore {
     public ArrayList<Articulo> getListadoArticulos() {
         return listadoArticulos;
     }
-
     public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
         this.listadoArticulos = listadoArticulos;
     }
@@ -82,22 +78,10 @@ public class OnlineStore {
     }
 
 
-    //  @Override
-    //  public String toString() {
-    //      return "OnlineStore {" +
-    //              "Clientes=" + listadoClientes.size() +
-    //             "Clientes Estandar=" + listadoClienteEstandar.size() +
-    //              "Clientes Premium=" + listadoClientePremium.size() +
-    //            ", Pedidos=" + listadoPedidos.size() +
-    //            ", Artículos=" + listadoArticulos.size() +
-    //            '}';
-    //  }
 
     //Funciones
 
-    public static void añadirCliente(Cliente c) {
-        listadoClientes.add(c);
-    }
+    public static void añadirCliente(Cliente c) {listadoClientes.add(c);}
 
     public static void añadirClienteEstandar(ClienteEstandar cS) {
         listadoClienteEstandar.add(cS);
@@ -107,16 +91,15 @@ public class OnlineStore {
         listadoClientePremium.add(cP);
     }
 
-    public void añadirArticulo(Articulo a) {
-        listadoArticulos.add(a);
-    }
+    public void añadirArticulo(Articulo a) {listadoArticulos.add(a);}
+
+    public void añadirPedido(Pedido p) {listadoPedidos.add(p);}
 
 
-    public void añadirPedido(Pedido p) {
-        listadoPedidos.add(p);
-    }
 
     public void eliminarPedido(int num) {
+
+
     }
 
 }
