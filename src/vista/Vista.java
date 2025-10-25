@@ -168,7 +168,20 @@ public class Vista {
 
     // menu 32
 
+    public static String  delPedido() {
+        Scanner teclado = new Scanner(System.in);
+        String datospedido = "";
 
+        System.out.println("\n------------------------");
+        System.out.println("\nBienvenido al Menú de Borrar Pedido");
+        System.out.println("\n------------------------");
+        System.out.print("Ingrese el identificdor del pedido a borrar: ");
+        datospedido= teclado.nextLine();
+
+        System.out.println("...Un momento por favor...");
+
+        return datospedido;
+    }
 
 
 
@@ -187,7 +200,7 @@ public class Vista {
     }
 
     // menu 34
-    public void MostrarPedidosEnviados(ArrayList<Pedido> finalizados){
+    public void MostrarPedidosFinalizados(ArrayList<Pedido> finalizados){
         System.out.println("\n------------------------");
         System.out.println("34. Mostrar Pedidos enviados");
         System.out.println("\n------------------------");

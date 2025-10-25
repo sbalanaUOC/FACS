@@ -56,6 +56,7 @@ public class Controlador {
 
     private void procesarOpcionPrincipal(int opcion) {
         switch (opcion) {
+            //****************************************
             case 11:
                 //  opcion Añadir artículo
                 addArticulo();
@@ -64,79 +65,49 @@ public class Controlador {
                 //  opcion Mostrar articulos
                 MostrarArticulos();
                 break;
+            //****************************************
             case 21:
                 //  opcion Añadir cliente
-
                 addClientes();
-
                 break;
 
             case 22:
                 //  opcion   Mostrar clientes
-                ArrayList<modelo.ClienteEstandar> clientessd = tienda.getListadoClienteEstandar();
-                vista.MostrarClientesStandard(clientessd);
-                ArrayList<modelo.ClientePremium> clientespr = tienda.getListadoClientePremium();
-                vista.MostrarClientesPremium(clientespr);
-
+                MostrarCLientes();
                 break;
+
             case 23:
                 //  opcion   Mostrar Clientes Stándar
-                ArrayList<modelo.ClienteEstandar> clientes = tienda.getListadoClienteEstandar();
-                vista.MostrarClientesStandard(clientes);
+                MostrarCLientesSTD();
                 break;
             case 24:
                 //  opcion   Mostrar Clietes Premium
-                //  opcion   Mostrar Clientes Stándar
-                ArrayList<modelo.ClientePremium> clientespm = tienda.getListadoClientePremium();
-                vista.MostrarClientesPremium(clientespm);
+                MostrarCLientesPRM();
                 break;
+            //****************************************
             case 31:
                 //  opcion    Añadir pedido
-                //Cliente cliente_aux=new Cliente("0","0","0","0");
-                //Articulo articulo_aux=new Articulo("0","0",0,0,0);
-                Cliente cliente_aux = null;
-                Articulo articulo_aux = null;
+                MostrarArticulos();
+                MostrarCLientes();
 
-                String[] resultado = vista.InfoPedido();
-
-
-                for (Cliente c : tienda.getListadoClientes()) {
-                    if (c.getNombre().equals(resultado[0])) {
-                        cliente_aux = c;
-                        //System.out.println("cliente encontrado: " + c.getNombre());
-                        break;  // opcional: salir si solo quieres el primero que coincide
-                    }
-                }
-
-                for (Articulo a : tienda.getListadoArticulos()) {
-                    if (a.getCodigo().equals(resultado[1])) {
-                        articulo_aux = a;
-                        //System.out.println("articulo encontrado: " + c.getNombre());
-                        break;  // opcional: salir si solo quieres el primero que coincide
-                    }
-                }
-
-                Pedido pd = new Pedido(cliente_aux, articulo_aux, Integer.parseInt(resultado[2]));
-
-                tienda.añadirPedido(pd);
-
+                AddPedido();
                 break;
+
             case 32:
-                //  opcion    Eliminar pedido
+                //  opcion  Eliminar pedido
+                  DeletePedido();
                 break;
             case 33:
                 //  opcion    Mostrar Pedidos pendientes
-                vista.MostrarPedidosPendientes(tienda.getListadoPedidosPendientes());
-                break;
+                MostrarPendientes();
+               break;
             case 34:
                 //  opcion    Mostrar Pedidos enviados
-
-                vista.MostrarPedidosEnviados(tienda.getListadoPedidosFinalizados());
+                MostrarFinalizados();
+                break;
             case 35:
                 //  opcion SECRETA    Mostrar Pedidos
-                vista.MostrarPedidosEnviados(tienda.getListadoPedidos());
-
-
+                MostrarTodosPedidos();
                 break;
             case 0:
                 System.out.println("Fin del programa.");
@@ -147,6 +118,8 @@ public class Controlador {
         }
 
     }
+    //*************************************************************************************************
+//  funciones de Articulo
 
     //  opcion 11  Añadir artículo
     public void addArticulo() {
@@ -158,6 +131,8 @@ public class Controlador {
         ArrayList<modelo.Articulo> articulos = tienda.getListadoArticulos();
         vista.MostrarArticulos(articulos);
     }
+//*************************************************************************************************
+//  funciones de CLientes
 
     //  opcion 21 Añadir cliente
     public void addClientes() {
@@ -177,11 +152,153 @@ public class Controlador {
            }
     }
 
+    //  opcion 22  Mostrar Clientes
+    public void MostrarCLientes() {
+        ArrayList<modelo.ClienteEstandar> clientessd = tienda.getListadoClienteEstandar();
+        vista.MostrarClientesStandard(clientessd);
+        ArrayList<modelo.ClientePremium> clientespr = tienda.getListadoClientePremium();
+        vista.MostrarClientesPremium(clientespr);
+    }
+
+    //  opcion 23  Mostrar Clientes Standard
+    public void MostrarCLientesSTD() {
+        ArrayList<modelo.ClienteEstandar> clientes = tienda.getListadoClienteEstandar();
+        vista.MostrarClientesStandard(clientes);
+    }
+
+    //  opcion 24  Mostrar Clientes PremiumStandard
+    public void MostrarCLientesPRM() {
+        ArrayList<modelo.ClientePremium> clientespm = tienda.getListadoClientePremium();
+        vista.MostrarClientesPremium(clientespm);
+    }
+
+//*************************************************************************************************
+//  funciones de Pedidos
+
+    //  opcion 31  Insercion Pedidos
+    public void AddPedido() {
+
+        //  opcion    Añadir pedido
+        Cliente cliente_aux=new Cliente("0","0","0","0");
+        Articulo articulo_aux=new Articulo("0","0",0,0,0);
+        //Cliente cliente_aux = null;
+        //Articulo articulo_aux = null;
+        boolean clienteencontrado=false;
+        boolean productoencontrado=false;
+
+        String[] resultado = vista.InfoPedido();
+
+        for (Cliente c : tienda.getListadoClienteEstandar()) {
+            System.out.println("comparando..." + resultado[0] + "  con  "+c.getNombre());
+            if (c.getNombre().equals(resultado[0])) {
+                cliente_aux.setEmail(c.getEmail());
+                cliente_aux.setNombre(c.getNombre());
+                cliente_aux.setDomicilio(c.getDomicilio());
+                cliente_aux.setNif(c.getNif());
+                clienteencontrado=true;
+                break;
+            }
+        }
+        for (Cliente c : tienda.getListadoClientePremium()) {
+            System.out.println("comparando..." + resultado[0] + "  con  "+c.getNombre());
+            if (c.getNombre().equals(resultado[0])) {
+                cliente_aux.setEmail(c.getEmail());
+                cliente_aux.setNombre(c.getNombre());
+                cliente_aux.setDomicilio(c.getDomicilio());
+                cliente_aux.setNif(c.getNif());
+                clienteencontrado=true;
+                break;
+            }
+        }
+        for (Articulo a : tienda.getListadoArticulos()) {
+            System.out.println("comparando..." + resultado[1] + "  con  "+a.getCodigo());
+            if (a.getCodigo().equals(resultado[1])) {
+                articulo_aux.setCodigo(a.getCodigo());
+                articulo_aux.setDescripcion(a.getDescripcion());
+                articulo_aux.setPrecioVenta(a.getPrecioVenta());
+                articulo_aux.setGastosEnvio(a.getGastosEnvio());
+                articulo_aux.setTiempoPreparacion(a.getTiempoPreparacion());
+                productoencontrado=true;
+                break;
+            }
+        }
+
+        if (productoencontrado==true) {
+            if (clienteencontrado == false){
+                addClientes();
+            }
+           // BuscarCliente(resultado[0]);
+            Pedido pd = new Pedido(BuscarCliente(resultado[0]), articulo_aux, Integer.parseInt(resultado[2]));
+            tienda.añadirPedido(pd);
+        }else{
+            System.out.println("Error el producto no existe. inicie el Proceso de Insercion");
+
+        }
 
 
+    }
 
 
+    //  opcion 32  Eliminar Pedidos
+    public void DeletePedido(){
 
+        String codigo = vista.delPedido();
+        for (Pedido p : tienda.getListadoPedidosPendientes()) {
+            System.out.println("comparando..." + codigo + "  con  " + p.getNum_pedido());
+            if (p.getNum_pedido() == Integer.parseInt(codigo)) {
+                tienda.eliminarPedido(p);
+                break;
+            }
+        }
+    }
+
+
+    //  opcion 33   Mostrar Pedidos pendientes
+    public void MostrarPendientes(){
+        vista.MostrarPedidosPendientes(tienda.getListadoPedidosPendientes());
+    }
+
+    //  opcion 34   Mostrar Pedidos pendientes
+    public void MostrarFinalizados(){
+        vista.MostrarPedidosFinalizados(tienda.getListadoPedidosFinalizados());
+    }
+
+    //  opcion 35   Mostrar Todos Pedidos (modo admin)
+    public void MostrarTodosPedidos() {
+        MostrarPendientes();
+        MostrarFinalizados();
+    }
+
+    //********************************************************************************
+
+    public Cliente BuscarCliente( String name){
+        Cliente cliente_aux=new Cliente("0","0","0","0");
+        //
+        for (Cliente c : tienda.getListadoClienteEstandar()) {
+            System.out.println("2a vuelta..." + name + "  con  "+c.getNombre());
+            if (c.getNombre().equals(name)) {
+                cliente_aux.setEmail(c.getEmail());
+                cliente_aux.setNombre(c.getNombre());
+                cliente_aux.setDomicilio(c.getDomicilio());
+                cliente_aux.setNif(c.getNif());
+            }
+        }
+
+        for (Cliente c : tienda.getListadoClientePremium()) {
+            System.out.println("2a vuelta..." + name + "  con  "+c.getNombre());
+            if (c.getNombre().equals(name)) {
+                cliente_aux.setEmail(c.getEmail());
+                cliente_aux.setNombre(c.getNombre());
+                cliente_aux.setDomicilio(c.getDomicilio());
+                cliente_aux.setNif(c.getNif());
+            }
+        }
+
+        return cliente_aux;
+    }
+
+
+    //**************************************************************************
     public void ValoresInicio(){
 
         modelo.ClienteEstandar cliente1 = new modelo.ClienteEstandar("111@kkk.com","name1","dom1","nif1");

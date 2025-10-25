@@ -51,4 +51,19 @@ public class Articulo {
     public void setTiempoPreparacion(int tiempoPreparacion) {
         this.TiempoPreparacion = tiempoPreparacion;
     }
+
+
+    //  toString
+    @Override
+    public String toString() {
+        return "Articulo{" +
+                "codigo='" + Codigo + '\'' +
+                ", descripcion='" + Descripcion + '\'' +
+                ", precioventa='" + PrecioVenta + '\'' +
+                ", gastos ennvio='" + GastosEnvio + '\'' +
+                ", tiempo preparacion='" + TiempoPreparacion + '\'' +
+                '}';
+    }
+
+
 }
