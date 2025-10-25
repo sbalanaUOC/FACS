@@ -7,8 +7,6 @@ import java.util.*;
 import modelo.*;
 import vista.Vista;
 
-
-
 public class Controlador {
 
     private Modelo modelo;
