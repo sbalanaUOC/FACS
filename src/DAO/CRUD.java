@@ -1,6 +1,7 @@
 package DAO;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 public interface CRUD<T,K> {
 
@@ -8,6 +9,6 @@ public interface CRUD<T,K> {
        T Read();
        void Update(T k);
        void Delete(T k);
-       List <T> Read_all();
+       ArrayList<T> Read_all();
 
 }

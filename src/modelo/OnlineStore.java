@@ -1,9 +1,16 @@
 package modelo;
 import java.util.ArrayList;
 
+import DAO.ArticuloDAO;
+import DAO.ClienteDAO;
+import DAO.PedidoDAO;
+
 import DTO.ArticuloDAO_DTO;
+import DTO.ClienteDAO_DTO;
+import DTO.PedidoDAO_DTO;
 
 public class OnlineStore {
+
 
 
     // Atributos
@@ -13,6 +20,11 @@ public class OnlineStore {
     private ArrayList<Pedido> listadoPedidos;
     private ArrayList<Articulo> listadoArticulos;
 
+    private ClienteDAO clienteDao;
+    private ArticuloDAO articuloDao;
+    private PedidoDAO pedidoDao;
+
+
     // Constructor
     public OnlineStore() {
         this.listadoClientes = new ArrayList<>();
@@ -20,6 +32,11 @@ public class OnlineStore {
         this.listadoClientePremium = new ArrayList<>();
         this.listadoPedidos = new ArrayList<>();
         this.listadoArticulos = new ArrayList<>();
+
+        this.clienteDao=new ClienteDAO_DTO();
+        this.articuloDao=new ArticuloDAO_DTO();
+        this.pedidoDao=new PedidoDAO_DTO();
+
     }
 
     // Getters y Setters
@@ -52,11 +69,21 @@ public class OnlineStore {
     }
 
 
+//*********************************************************************************************************************//
+
+    public void añadirArticulo(Articulo a) {
+        articuloDao.Create(a);
+        //listadoArticulos.add(a);
+    }
+
+
 
     public ArrayList<Articulo> getListadoArticulos() {
+         return articuloDao.Read_all();
 
-        return listadoArticulos;
     }
+//*********************************************************************************************************************//
+
 
 
 
@@ -90,20 +117,18 @@ public class OnlineStore {
     //Funciones
 
     public static void añadirCliente(Cliente c) {listadoClientes.add(c);}
-
     public static void añadirClienteEstandar(ClienteEstandar cS) {
         listadoClienteEstandar.add(cS);
     }
-
     public static void añadirClientePremium(ClientePremium cP) {
         listadoClientePremium.add(cP);
     }
 
-    public void añadirArticulo(Articulo a) {listadoArticulos.add(a);}
+
+
+
 
     public void añadirPedido(Pedido p) {listadoPedidos.add(p);}
-
-
     public void eliminarPedido(Pedido p) {listadoPedidos.remove(p);
 
 

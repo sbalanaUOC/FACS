@@ -125,6 +125,7 @@ public class Controlador {
         tienda.añadirArticulo(vista.InfoArticulo());
     }
 
+
     //  opcion 12  Mostrar artículo
     public void MostrarArticulos() {
 

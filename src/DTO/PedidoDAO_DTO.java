@@ -1,18 +1,14 @@
 package DTO;
 
 import DAO.PedidoDAO;
+import modelo.Cliente;
 import modelo.Pedido;
 
-import java.sql.Connection;
-import java.util.List;
+import java.util.ArrayList;
 
 public class PedidoDAO_DTO implements PedidoDAO {
 
-    private Connection conn;
 
-    public PedidoDAO_DTO(Connection conn){
-        this.conn=conn;
-    }
 
 
     @Override
@@ -36,7 +32,10 @@ public class PedidoDAO_DTO implements PedidoDAO {
     }
 
     @Override
-    public List<Pedido> Read_all() {
-        return List.of();
+    public ArrayList<Pedido> Read_all() {
+
+        ArrayList<Pedido> pedidos = null;
+        return pedidos;
+
     }
 }

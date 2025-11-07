@@ -4,10 +4,8 @@ import DAO.ArticuloDAO;
 import modelo.Articulo;
 
 import DAO.Conexion_MySQL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +18,15 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
     final String insert ="INSERT INTO articulos (idcodigo,descripcion,precioventa,gastosenvio,tiempopreparacion) VALUES (?,?,?,?,?);";
     final String readall="select * from articulos;";
 
-   // private Connection conn;
 
-   // public ArticuloDAO_DTO(Connection conn){
-   //     this.conn=conn;
-   // }
 
     @Override
     public void Create(Articulo k) {
-        PreparedStatement stat=null;
+        //PreparedStatement stat=null;
         try {
             Connection conn = Conexion_MySQL.getConnection();
-            stat= conn.prepareStatement(insert);
+            Statement stat= conn.createStatement(insert);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally{
@@ -71,13 +66,21 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
 
             articulos = new ArrayList<>();
 
-            while (rs.next()) { // Mueve el cursor a la siguiente fila, devuelve false si no hay más
-                System.out.println("leo:  " + rs.getString("idcodigo"));
-                System.out.println("leo:  " + rs.getString("descripcion"));
-                System.out.println("leo:  " + rs.getFloat("precioventa"));
-                System.out.println("leo:  " + rs.getFloat("gastosenvio"));
-                System.out.println("leo:  " + rs.getInt("tiempopreparacion"));
-
+            while (rs.next()) {
+                Articulo a = new Articulo(
+                        rs.getString("idcodigo"),
+                        rs.getString("descripcion"),
+                        rs.getFloat("precioventa"),
+                        rs.getFloat("gastosenvio"),
+                        rs.getInt("tiempopreparacion")
+                );
+                articulos.add(a);
+                // Mueve el cursor a la siguiente fila, devuelve false si no hay más
+                //System.out.println("leo:  " + rs.getString("idcodigo"));
+                //System.out.println("leo:  " + rs.getString("descripcion"));
+                //System.out.println("leo:  " + rs.getFloat("precioventa"));
+                //System.out.println("leo:  " + rs.getFloat("gastosenvio"));
+                //System.out.println("leo:  " + rs.getInt("tiempopreparacion"));
             }
 
         } catch (SQLException e) {

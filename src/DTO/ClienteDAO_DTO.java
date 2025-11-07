@@ -3,16 +3,11 @@ package DTO;
 import DAO.ClienteDAO;
 import modelo.Cliente;
 
-import java.sql.Connection;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ClienteDAO_DTO implements ClienteDAO {
 
-    private Connection conn;
 
-    public ClienteDAO_DTO(Connection conn){
-        this.conn=conn;
-    }
 
     @Override
     public void Create(Cliente k) {
@@ -35,7 +30,11 @@ public class ClienteDAO_DTO implements ClienteDAO {
     }
 
     @Override
-    public List<Cliente> Read_all() {
-        return List.of();
+    public ArrayList<Cliente> Read_all() {
+
+        //Cliente clientes = new ArrayList<>();
+
+        ArrayList<Cliente> clientes = null;
+        return clientes;
     }
 }
