@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.*;
 
+import DTO.ArticuloDAO_DTO;
 import modelo.*;
 import vista.Vista;
 
@@ -126,7 +127,11 @@ public class Controlador {
 
     //  opcion 12  Mostrar artículo
     public void MostrarArticulos() {
+
+
         ArrayList<modelo.Articulo> articulos = tienda.getListadoArticulos();
+
+
         vista.MostrarArticulos(articulos);
     }
 //*************************************************************************************************

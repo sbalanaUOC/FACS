@@ -1,6 +1,8 @@
 package modelo;
 import java.util.ArrayList;
 
+import DTO.ArticuloDAO_DTO;
+
 public class OnlineStore {
 
 
@@ -49,9 +51,15 @@ public class OnlineStore {
         this.listadoPedidos = listadoPedidos;
     }
 
+
+
     public ArrayList<Articulo> getListadoArticulos() {
+
         return listadoArticulos;
     }
+
+
+
     public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
         this.listadoArticulos = listadoArticulos;
     }

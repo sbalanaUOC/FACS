@@ -14,14 +14,19 @@ void main() {
 Modelo modelo = new Modelo();
 Vista vista = new Vista();
 Controlador controlador = new Controlador(modelo, vista);
-
-if (conexion()) {
-    ;
-    //System.out.println("Conexion establecida.");
     controlador.iniciarPrograma();
-     }else {
-            System.out.println("Error de conexion.");
-           }
+
+//if (conexion()) {
+//    ;
+//    //System.out.println("Conexion establecida.");
+//    controlador.iniciarPrograma();
+//     }else {
+//            System.out.println("Error de conexion. Revise conectividad");
+//
+//
+//           }
+
+
 }
 
 
