@@ -15,14 +15,14 @@ public class TestConexion {
             // Intentar conectar
             Connection conexion = DriverManager.getConnection(url, usuario, password);
 
-            System.out.println("✅ ¡Perfecto, te has conectado a MySQL!");
+            System.out.println("Perfecto, te has conectado a MySQL!");
             System.out.println("Base de datos: " + conexion.getCatalog());
 
             // Cerrar conexión
             conexion.close();
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al conectar a la base de datos MySQL:");
+            System.out.println("No te has podido conectar a la base de datos de FACS:");
             System.out.println("Mensaje: " + e.getMessage());
             e.printStackTrace();
         }
