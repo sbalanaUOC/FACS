@@ -115,7 +115,7 @@ public class Vista {
     }
 
     // menu 23
-    public void MostrarClientesStandard(ArrayList<ClienteEstandar> estandar){
+    public void MostrarClientesStandard(ArrayList<Cliente> estandar){
         if (estandar.isEmpty()) {
             System.out.println("No hay clientes registrados.");
             return;
@@ -123,13 +123,13 @@ public class Vista {
         System.out.println("\n------------------------");
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("\n------------------------");
-        for (ClienteEstandar cS : estandar) {
+        for (Cliente cS : estandar) {
             System.out.println(cS.getNombre() + " - " + cS.getDomicilio() + " - " + cS.getNif());
         }
     }
 
     // menu 24
-    public void MostrarClientesPremium(ArrayList<ClientePremium> premium) {
+    public void MostrarClientesPremium(ArrayList<Cliente> premium) {
         if (premium.isEmpty()) {
             System.out.println("No hay clientes registrados.");
             return;
@@ -137,7 +137,7 @@ public class Vista {
         System.out.println("\n------------------------");
         System.out.println("24. Mostrar Clientes Premium");
         System.out.println("\n------------------------");
-        for (ClientePremium cP : premium) {
+        for (Cliente cP : premium) {
             System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif());
         }
     }

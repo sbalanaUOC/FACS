@@ -20,7 +20,7 @@ public class OnlineStore {
     private ArrayList<Pedido> listadoPedidos;
     private ArrayList<Articulo> listadoArticulos;
 
-    private ClienteDAO clienteDao;
+    private static ClienteDAO clienteDao;
     private ArticuloDAO articuloDao;
     private PedidoDAO pedidoDao;
 
@@ -39,28 +39,61 @@ public class OnlineStore {
 
     }
 
-    // Getters y Setters
-    public ArrayList<Cliente> getListadoClientes() {
-        return listadoClientes;
-    }
-    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
-        this.listadoClientes = listadoClientes;
+
+    //*********************************************************************************************************************//
+    public void añadirArticulo(Articulo a){
+        articuloDao.Create(a);
+        //listadoArticulos.add(a);
     }
 
-    public ArrayList<ClienteEstandar> getListadoClienteEstandar() {
-        return listadoClienteEstandar;
+    public ArrayList<Articulo> getListadoArticulos()  {
+        return articuloDao.Read_all();
+
+    }
+//*********************************************************************************************************************//
+
+    public static void añadirCliente(Cliente c) {
+        clienteDao.Create(c);
+        //    listadoClientes.add(c);
+    }
+        // public static void añadirClienteEstandar(ClienteEstandar cS) {
+    //       // clienteDao.Create(cS);
+    //       //
+    //       //listadoClienteEstandar.add(cS);
+        //    }
+    //   public static void añadirClientePremium(ClientePremium cP) {
+    //        //
+    //        //clienteDao.Create(cP);
+    //       //listadoClientePremium.add(cP);
+    //    }
+
+
+    public ArrayList<Cliente> getListadoClientes() {
+        return clienteDao.Read_all();
+    }
+
+
+    public ArrayList<Cliente> getListadoClienteEstandar(){
+        return clienteDao.Read_STD();
+       // return listadoClienteEstandar;
+    }
+    public ArrayList<Cliente> getListadoClientePremium() {
+        return clienteDao.Read_PRM();
+       // return listadoClientePremium;
+    }
+
+
+
+
+    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
+        this.listadoClientes = listadoClientes;
     }
     public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
         this.listadoClienteEstandar = listadoClienteEstandar;
     }
-
-    public ArrayList<ClientePremium> getListadoClientePremium() {
-        return listadoClientePremium;
-    }
     public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
         this.listadoClientePremium = listadoClientePremium;
     }
-
     public ArrayList<Pedido> getListadoPedidos() {
         return listadoPedidos;
     }
@@ -69,20 +102,6 @@ public class OnlineStore {
     }
 
 
-//*********************************************************************************************************************//
-
-    public void añadirArticulo(Articulo a) {
-        articuloDao.Create(a);
-        //listadoArticulos.add(a);
-    }
-
-
-
-    public ArrayList<Articulo> getListadoArticulos() {
-         return articuloDao.Read_all();
-
-    }
-//*********************************************************************************************************************//
 
 
 
@@ -115,15 +134,6 @@ public class OnlineStore {
 
 
     //Funciones
-
-    public static void añadirCliente(Cliente c) {listadoClientes.add(c);}
-    public static void añadirClienteEstandar(ClienteEstandar cS) {
-        listadoClienteEstandar.add(cS);
-    }
-    public static void añadirClientePremium(ClientePremium cP) {
-        listadoClientePremium.add(cP);
-    }
-
 
 
 

@@ -8,35 +8,43 @@ import DAO.Conexion_MySQL;
 import java.sql.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ArticuloDAO_DTO implements ArticuloDAO {
 
 
 
 
-    final String insert ="INSERT INTO articulos (idcodigo,descripcion,precioventa,gastosenvio,tiempopreparacion) VALUES (?,?,?,?,?);";
+    final String insert ="INSERT INTO articulos (idcodigo,descripcion,precioventa,gastosenvio,tiempopreparacion) VALUES (?,?,?,?,?)";
     final String readall="select * from articulos;";
 
 
 
     @Override
-    public void Create(Articulo k) {
-        //PreparedStatement stat=null;
+    public void Create(Articulo k)  {
+        PreparedStatement stat=null;
+
         try {
             Connection conn = Conexion_MySQL.getConnection();
-            Statement stat= conn.createStatement(insert);
+            stat = conn.prepareStatement(insert);
+            stat.setString(1,k.getCodigo());
+            stat.setString(2,k.getDescripcion());
+            stat.setFloat(3,k.getPrecioVenta());
+            stat.setFloat(4,k.getGastosEnvio());
+            stat.setInt(5,k.getTiempoPreparacion());
+            stat.executeUpdate();
+            // System.out.println("leo:  " + insert);
+        } catch (SQLException ex) {
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally{
-            if (stat!= null){
-                try{
+        } finally {
+            if (stat != null) {
+                try {
                     stat.close();
-                }catch (SQLException ex){
+                } catch (SQLException ex) {
+
 
                 }
-            };
+            }
+            ;
         }
 
     }
@@ -47,14 +55,12 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
     }
 
     @Override
-    public void Update(Articulo k) {
-
-    }
+    public void Update(Articulo k) {}
 
     @Override
-    public void Delete(Articulo k) {
+    public void Delete(Articulo k) {}
 
-    }
+
 
     @Override
     public ArrayList<Articulo> Read_all() {

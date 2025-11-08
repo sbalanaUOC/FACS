@@ -2,9 +2,7 @@ package controlador;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.*;
 
-import DTO.ArticuloDAO_DTO;
 import modelo.*;
 import vista.Vista;
 
@@ -143,14 +141,15 @@ public class Controlador {
         String[] usuarios = Vista.InfoCliente();
 
            if (usuarios[4].equals("1")) {
-                System.out.println("El usuario eligió Standard");
-                ClienteEstandar cs = new ClienteEstandar(usuarios[0], usuarios[1], usuarios[2], usuarios[3]);
-                tienda.añadirClienteEstandar(cs);
+                //System.out.println("El usuario eligió Standard");
+                Cliente cs = new Cliente(usuarios[0], usuarios[1], usuarios[2], usuarios[3],Integer.parseInt(usuarios[4]));
+
+                tienda.añadirCliente(cs);
 
             } else if (usuarios[4].equals("2")) {
-                System.out.println("El usuario eligió Premium");
-                ClientePremium cp = new ClientePremium(usuarios[0], usuarios[1], usuarios[2], usuarios[3]);
-                tienda.añadirClientePremium(cp);
+                //System.out.println("El usuario eligió Premium");
+                Cliente cp = new Cliente(usuarios[0], usuarios[1], usuarios[2], usuarios[3],Integer.parseInt(usuarios[4]));
+                tienda.añadirCliente(cp);
             } else {
                //
            }
@@ -158,21 +157,24 @@ public class Controlador {
 
     //  opcion 22  Mostrar Clientes
     public void MostrarCLientes() {
-        ArrayList<modelo.ClienteEstandar> clientessd = tienda.getListadoClienteEstandar();
-        vista.MostrarClientesStandard(clientessd);
-        ArrayList<modelo.ClientePremium> clientespr = tienda.getListadoClientePremium();
-        vista.MostrarClientesPremium(clientespr);
+       // ArrayList<modelo.ClienteEstandar> clientessd = tienda.getListadoClienteEstandar();
+       // vista.MostrarClientesStandard(clientessd);
+       // ArrayList<modelo.ClientePremium> clientespr = tienda.getListadoClientePremium();
+       // vista.MostrarClientesPremium(clientespr);
+        ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
+        vista.MostrarClientes(clientes);
+
     }
 
     //  opcion 23  Mostrar Clientes Standard
     public void MostrarCLientesSTD() {
-        ArrayList<modelo.ClienteEstandar> clientes = tienda.getListadoClienteEstandar();
+        ArrayList<modelo.Cliente> clientes = tienda.getListadoClienteEstandar();
         vista.MostrarClientesStandard(clientes);
     }
 
     //  opcion 24  Mostrar Clientes PremiumStandard
     public void MostrarCLientesPRM() {
-        ArrayList<modelo.ClientePremium> clientespm = tienda.getListadoClientePremium();
+        ArrayList<modelo.Cliente> clientespm = tienda.getListadoClientePremium();
         vista.MostrarClientesPremium(clientespm);
     }
 
@@ -183,7 +185,7 @@ public class Controlador {
     public void AddPedido() {
 
         //  opcion    Añadir pedido
-        Cliente cliente_aux=new Cliente("0","0","0","0");
+        Cliente cliente_aux=new Cliente("0","0","0","0",0);
         Articulo articulo_aux=new Articulo("0","0",0,0,0);
         //Cliente cliente_aux = null;
         //Articulo articulo_aux = null;
@@ -276,7 +278,7 @@ public class Controlador {
     //********************************************************************************
 
     public Cliente BuscarCliente( String name){
-        Cliente cliente_aux=new Cliente("0","0","0","0");
+        Cliente cliente_aux=new Cliente("0","0","0","0",0);
         //
         for (Cliente c : tienda.getListadoClienteEstandar()) {
             System.out.println("2a vuelta..." + name + "  con  "+c.getNombre());
@@ -305,10 +307,10 @@ public class Controlador {
     //**************************************************************************
     public void ValoresInicio(){
 
-        modelo.ClienteEstandar cliente1 = new modelo.ClienteEstandar("111@kkk.com","name1","dom1","nif1");
-        modelo.ClienteEstandar cliente2 = new modelo.ClienteEstandar("222@kkk.com","name2","dom2","nif2");
-        modelo.ClientePremium cliente3 = new modelo.ClientePremium("3333@kkk.com","name3","dom3","nif3");
-        modelo.ClientePremium cliente4 = new modelo.ClientePremium("4444@kkk.com","name4","dom4","nif4");
+        modelo.Cliente cliente1 = new modelo.ClienteEstandar("111@kkk.com","name1","dom1","nif1",1);
+        modelo.Cliente cliente2 = new modelo.ClienteEstandar("222@kkk.com","name2","dom2","nif2",1);
+        modelo.Cliente cliente3 = new modelo.ClientePremium("3333@kkk.com","name3","dom3","nif3",2);
+        modelo.Cliente cliente4 = new modelo.ClientePremium("4444@kkk.com","name4","dom4","nif4",2);
 
         modelo.Articulo articulo1 = new modelo.Articulo("art1","des1",111,11,1111);
         modelo.Articulo articulo2 = new modelo.Articulo("art2","des2",222,22,2222);
@@ -321,14 +323,16 @@ public class Controlador {
         modelo.Pedido pedido5 = new modelo.Pedido(cliente2,articulo2,2);
         modelo.Pedido pedido6 = new modelo.Pedido(cliente3,articulo3,3);
 
+
+
         tienda.añadirArticulo(articulo1);
         tienda.añadirArticulo(articulo2);
         tienda.añadirArticulo(articulo3);
 
-        tienda.añadirClienteEstandar(cliente1);
-        tienda.añadirClienteEstandar(cliente2);
-        tienda.añadirClientePremium(cliente3);
-        tienda.añadirClientePremium(cliente4);
+        tienda.añadirCliente(cliente1);
+        tienda.añadirCliente(cliente2);
+        tienda.añadirCliente(cliente3);
+        tienda.añadirCliente(cliente4);
 
         tienda.añadirPedido(pedido1);
         tienda.añadirPedido(pedido2);
