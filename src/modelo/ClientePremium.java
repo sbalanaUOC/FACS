@@ -12,15 +12,15 @@ public class ClientePremium extends Cliente {
   //      this.descuento = 0.20f;
   //  }
 
-    public ClientePremium(String email, String nombre, String domicilio, String nif) {
-        super(email, nombre, domicilio, nif);
+    public ClientePremium(String email, String nombre, String domicilio, String nif,Integer tipo) {
+        super(email, nombre, domicilio, nif,tipo);
         this.cuota = 30.0f;
         this.descuento = 0.20f;
     }
 
-    public ClientePremium(String email, String nombre, String domicilio, String nif,
+    public ClientePremium(String email, String nombre, String domicilio, String nif,Integer tipo,
                         float cuota, float descuento) {
-        super(email, nombre, domicilio, nif);
+        super(email, nombre, domicilio, nif, tipo);
         this.cuota = cuota;
         this.descuento = descuento;
     }

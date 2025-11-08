@@ -1,7 +1,16 @@
 package modelo;
 import java.util.ArrayList;
 
+import DAO.ArticuloDAO;
+import DAO.ClienteDAO;
+import DAO.PedidoDAO;
+
+import DTO.ArticuloDAO_DTO;
+import DTO.ClienteDAO_DTO;
+import DTO.PedidoDAO_DTO;
+
 public class OnlineStore {
+
 
 
     // Atributos
@@ -11,6 +20,11 @@ public class OnlineStore {
     private ArrayList<Pedido> listadoPedidos;
     private ArrayList<Articulo> listadoArticulos;
 
+    private static ClienteDAO clienteDao;
+    private ArticuloDAO articuloDao;
+    private PedidoDAO pedidoDao;
+
+
     // Constructor
     public OnlineStore() {
         this.listadoClientes = new ArrayList<>();
@@ -18,30 +32,70 @@ public class OnlineStore {
         this.listadoClientePremium = new ArrayList<>();
         this.listadoPedidos = new ArrayList<>();
         this.listadoArticulos = new ArrayList<>();
+
+        this.clienteDao=new ClienteDAO_DTO();
+        this.articuloDao=new ArticuloDAO_DTO();
+        this.pedidoDao=new PedidoDAO_DTO();
+
     }
 
-    // Getters y Setters
-    public ArrayList<Cliente> getListadoClientes() {
-        return listadoClientes;
+
+    //*********************************************************************************************************************//
+    public void añadirArticulo(Articulo a){
+        articuloDao.Create(a);
+        //listadoArticulos.add(a);
     }
+
+    public ArrayList<Articulo> getListadoArticulos()  {
+        return articuloDao.Read_all();
+
+    }
+//*********************************************************************************************************************//
+
+    public static void añadirCliente(Cliente c) {
+        clienteDao.Create(c);
+        //    listadoClientes.add(c);
+    }
+        // public static void añadirClienteEstandar(ClienteEstandar cS) {
+    //       // clienteDao.Create(cS);
+    //       //
+    //       //listadoClienteEstandar.add(cS);
+        //    }
+    //   public static void añadirClientePremium(ClientePremium cP) {
+    //        //
+    //        //clienteDao.Create(cP);
+    //       //listadoClientePremium.add(cP);
+    //    }
+
+
+    public ArrayList<Cliente> getListadoClientes() {
+        return clienteDao.Read_all();
+    }
+
+
+    public ArrayList<Cliente> getListadoClienteEstandar(){
+        return clienteDao.Read_STD();
+       // return listadoClienteEstandar;
+    }
+    public ArrayList<Cliente> getListadoClientePremium() {
+        return clienteDao.Read_PRM();
+       // return listadoClientePremium;
+    }
+
+//*********************************************************************************************************************//
+//*********************************************************************************************************************//
+
+
+
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
-    }
-
-    public ArrayList<ClienteEstandar> getListadoClienteEstandar() {
-        return listadoClienteEstandar;
     }
     public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
         this.listadoClienteEstandar = listadoClienteEstandar;
     }
-
-    public ArrayList<ClientePremium> getListadoClientePremium() {
-        return listadoClientePremium;
-    }
     public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
         this.listadoClientePremium = listadoClientePremium;
     }
-
     public ArrayList<Pedido> getListadoPedidos() {
         return listadoPedidos;
     }
@@ -49,9 +103,11 @@ public class OnlineStore {
         this.listadoPedidos = listadoPedidos;
     }
 
-    public ArrayList<Articulo> getListadoArticulos() {
-        return listadoArticulos;
-    }
+
+
+
+
+
     public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
         this.listadoArticulos = listadoArticulos;
     }
@@ -81,25 +137,18 @@ public class OnlineStore {
 
     //Funciones
 
-    public static void añadirCliente(Cliente c) {listadoClientes.add(c);}
 
-    public static void añadirClienteEstandar(ClienteEstandar cS) {
-        listadoClienteEstandar.add(cS);
+
+
+    public void añadirPedido(Pedido p) {
+
+        listadoPedidos.add(p);
     }
 
-    public static void añadirClientePremium(ClientePremium cP) {
-        listadoClientePremium.add(cP);
-    }
 
-    public void añadirArticulo(Articulo a) {listadoArticulos.add(a);}
+    public void eliminarPedido(Pedido p) {
 
-    public void añadirPedido(Pedido p) {listadoPedidos.add(p);}
-
-
-
-    public void eliminarPedido(int num) {
-
-
+        listadoPedidos.remove(p);
     }
 
 }
