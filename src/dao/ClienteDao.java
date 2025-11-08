@@ -1,4 +1,4 @@
 package dao;
 
-public class ClienteDao {
+public interface ClienteDao {
 }
