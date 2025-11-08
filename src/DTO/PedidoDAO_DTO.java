@@ -2,7 +2,6 @@ package DTO;
 
 import DAO.Conexion_MySQL;
 import DAO.PedidoDAO;
-import modelo.Cliente;
 import modelo.Pedido;
 
 import java.sql.Connection;
@@ -26,13 +25,13 @@ public class PedidoDAO_DTO implements PedidoDAO {
         try {
             Connection conn = Conexion_MySQL.getConnection();
             stat = conn.prepareStatement(insert);
-          //  stat.setInt(1,k.getCliente());
-          //  stat.setString(2,k.getArticulo());
-          //  stat.setFloat(3,k.getCantidad());
-          //  stat.setFloat(4,k.getFecha());
-          //  stat.setString(5,k.getEstado());
-          //  stat.executeUpdate();
-            // System.out.println("leo:  " + insert);
+         //   stat.setInt(1,k.getCliente().getNombre());
+         //   stat.setString(2,k.getArticulo());
+         //   stat.setInt(3,k.getCantidad());
+         //   stat.setDate(4,k.getFecha());
+         //   stat.setString(5,k.getEstado());
+         //   stat.executeUpdate();
+         //  System.out.println("leo:  " + insert);
         } catch (SQLException ex) {
 
         } finally {

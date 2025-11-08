@@ -86,6 +86,27 @@ public class OnlineStore {
 //*********************************************************************************************************************//
 
 
+    public void añadirPedido(Pedido p) {
+        pedidoDao.Create(p);
+     //   listadoPedidos.add(p);
+    }
+
+
+    public void eliminarPedido(Pedido p) {
+        pedidoDao.Delete(p);
+      //    listadoPedidos.remove(p);
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
@@ -139,16 +160,5 @@ public class OnlineStore {
 
 
 
-
-    public void añadirPedido(Pedido p) {
-
-        listadoPedidos.add(p);
-    }
-
-
-    public void eliminarPedido(Pedido p) {
-
-        listadoPedidos.remove(p);
-    }
 
 }

@@ -33,6 +33,8 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
             stat.setInt(5,k.getTiempoPreparacion());
             stat.executeUpdate();
             // System.out.println("leo:  " + insert);
+
+
         } catch (SQLException ex) {
 
         } finally {
