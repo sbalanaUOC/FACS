@@ -8,6 +8,8 @@ public class Articulo {
     private float PrecioVenta;
     private float GastosEnvio;
     private int TiempoPreparacion;
+    private int idArticulo;
+
 
     public Articulo(String codigo, String descripcion, float precioVenta, float gastosEnvio, int tiempoPreparacion) {
         Codigo = codigo;
@@ -15,6 +17,7 @@ public class Articulo {
         PrecioVenta = precioVenta;
         GastosEnvio = gastosEnvio;
         TiempoPreparacion = tiempoPreparacion;
+        idArticulo=-1;
     }
 
     public String getCodigo() {
