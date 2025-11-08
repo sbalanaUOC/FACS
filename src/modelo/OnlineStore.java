@@ -82,6 +82,8 @@ public class OnlineStore {
        // return listadoClientePremium;
     }
 
+//*********************************************************************************************************************//
+//*********************************************************************************************************************//
 
 
 
@@ -138,10 +140,15 @@ public class OnlineStore {
 
 
 
-    public void añadirPedido(Pedido p) {listadoPedidos.add(p);}
-    public void eliminarPedido(Pedido p) {listadoPedidos.remove(p);
+    public void añadirPedido(Pedido p) {
+
+        listadoPedidos.add(p);
+    }
 
 
+    public void eliminarPedido(Pedido p) {
+
+        listadoPedidos.remove(p);
     }
 
 }
