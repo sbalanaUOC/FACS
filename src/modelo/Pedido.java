@@ -94,4 +94,19 @@ public class Pedido {
 
     public void CalcularPeridodoAnulacion(){
     }
+
+
+    //  toString
+    @Override
+    public String toString() {
+        return "Clientes{" +
+                "numpedido='" + numpedido + '\'' +
+                ", cliente='" + cliente + '\'' +
+                ", articulo='" + articulo + '\'' +
+                ", cantidad='" + cantidad + '\'' +
+                ", fecha='" + fecha + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
 }

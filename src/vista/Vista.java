@@ -110,7 +110,7 @@ public class Vista {
         System.out.println("22. Mostrar clientes");
         System.out.println("\n------------------------");
         for (Cliente c : clientes) {
-            System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif());
+            System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif()+ " - " + c.getTipo()+ " - " + c.getIdCliente());
         }
     }
 
@@ -124,7 +124,7 @@ public class Vista {
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("\n------------------------");
         for (Cliente cS : estandar) {
-            System.out.println(cS.getNombre() + " - " + cS.getDomicilio() + " - " + cS.getNif());
+            System.out.println(cS.getNombre() + " - " + cS.getDomicilio() + " - " + cS.getNif()+ " - " + cS.getTipo()+ " - " + cS.getIdCliente());
         }
     }
 
@@ -138,7 +138,7 @@ public class Vista {
         System.out.println("24. Mostrar Clientes Premium");
         System.out.println("\n------------------------");
         for (Cliente cP : premium) {
-            System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif());
+            System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif()+" - " + cP.getTipo()+ " - " + cP.getIdCliente());
         }
     }
 

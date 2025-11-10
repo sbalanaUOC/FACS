@@ -2,13 +2,9 @@ package DTO;
 
 import DAO.ClienteDAO;
 import DAO.Conexion_MySQL;
-import modelo.Articulo;
 import modelo.Cliente;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ClienteDAO_DTO implements ClienteDAO {
@@ -19,21 +15,30 @@ public class ClienteDAO_DTO implements ClienteDAO {
     final String readall="select * from articulos;";
 
     @Override
-    public void Create(Cliente k) {
+    public int CreateWithIndex(Cliente k) {
         PreparedStatement stat=null;
+        int idGenerado=0;
 
         try {
             Connection conn = Conexion_MySQL.getConnection();
-            stat = conn.prepareStatement(insert);
+            stat = conn.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stat.setString(1,k.getEmail());
             stat.setString(2,k.getNombre());
             stat.setString(3,k.getDomicilio());
             stat.setString(4,k.getNif());
             stat.setInt(5,k.getTipo());
 
+            int filasInsercion=stat.executeUpdate();
+            //stat.executeUpdate();
+            System.out.println("filas insertadas "+ filasInsercion );
+            if (filasInsercion > 0) {
+                ResultSet claves = stat.getGeneratedKeys();
+                if (claves.next()) {
+                    idGenerado = claves.getInt(1);
+                }
+                System.out.println("idgenerado: " +idGenerado );
+            }
 
-            stat.executeUpdate();
-             System.out.println("leo:  " + insert);
         } catch (SQLException ex) {
 
         } finally {
@@ -44,7 +49,11 @@ public class ClienteDAO_DTO implements ClienteDAO {
                 }
             }
         }
+        return idGenerado;
     }
+
+    public void Create(Cliente k) {}
+
 
     @Override
     public Cliente Read() {
@@ -52,14 +61,12 @@ public class ClienteDAO_DTO implements ClienteDAO {
     }
 
     @Override
-    public void Update(Cliente k) {
-
-    }
+    public void Update(Cliente k) {}
 
     @Override
-    public void Delete(Cliente k) {
+    public void Delete(Cliente k) {}
 
-    }
+
 
     @Override
     public ArrayList<Cliente> Read_all() {

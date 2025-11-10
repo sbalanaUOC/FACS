@@ -53,8 +53,10 @@ public class OnlineStore {
 //*********************************************************************************************************************//
 
     public static void añadirCliente(Cliente c) {
-        clienteDao.Create(c);
-        //    listadoClientes.add(c);
+
+        int temp = clienteDao.CreateWithIndex(c);
+        c.setIdCliente(temp);
+
     }
         // public static void añadirClienteEstandar(ClienteEstandar cS) {
     //       // clienteDao.Create(cS);
@@ -88,7 +90,7 @@ public class OnlineStore {
 
     public void añadirPedido(Pedido p) {
         pedidoDao.Create(p);
-     //   listadoPedidos.add(p);
+        //   listadoPedidos.add(p);
     }
 
 

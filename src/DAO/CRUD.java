@@ -10,5 +10,5 @@ public interface CRUD<T,K> {
        void Update(T k);
        void Delete(T k);
        ArrayList<T> Read_all();
-
+       int CreateWithIndex(T K);
 }

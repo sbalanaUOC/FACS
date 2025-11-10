@@ -8,10 +8,14 @@ public class Cliente {
     private String domicilio;
     private String nif;
     private Integer tipo;
+    private Integer idCliente;
+
+
+    // private int idCliente;
 
     //  Constructores 
-    public Cliente() { // constructor vacío
-    }
+    public Cliente() {} // constructor vacío
+
 
 
     public Cliente(String email, String nombre, String domicilio, String nif, Integer tipo) {
@@ -20,6 +24,7 @@ public class Cliente {
         this.domicilio = domicilio;
         this.nif = nif;
         this.tipo =tipo;
+        this.idCliente=-1;
     }
 
     //  Getters y Setters 
@@ -54,6 +59,13 @@ public class Cliente {
     public Integer getTipo() {return tipo;}
     public void setTipo(Integer tipo) {this.tipo = tipo;}
 
+    public int getIdCliente() {return idCliente;}
+    public void setIdCliente(int idCliente) {
+        System.out.println("id antes "+ idCliente +"/" + this.idCliente );
+        this.idCliente = idCliente;
+        System.out.println("id despues "+ idCliente +"/" + this.idCliente );
+
+    }
 
 
 
@@ -66,6 +78,8 @@ public class Cliente {
                 ", nombre='" + nombre + '\'' +
                 ", domicilio='" + domicilio + '\'' +
                 ", nif='" + nif + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", idCliente='" + idCliente + '\'' +
                 '}';
     }
 }

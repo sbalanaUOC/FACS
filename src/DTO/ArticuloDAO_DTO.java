@@ -51,6 +51,12 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
 
     }
 
+
+    @Override
+    public int CreateWithIndex(Articulo K) {
+        return 0;
+    }
+
     @Override
     public Articulo Read() {
         return null;
@@ -101,4 +107,6 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
 
 
     }
+
+
 }
