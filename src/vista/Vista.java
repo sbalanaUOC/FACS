@@ -110,7 +110,12 @@ public class Vista {
         System.out.println("22. Mostrar clientes");
         System.out.println("------------------------");
         for (Cliente c : clientes) {
-            System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif()+ " - " + c.getTipo()+ " - " + c.getIdCliente());
+            System.out.println(c.getEmail() + " - "
+                               +c.getNombre() + " - "
+                               + c.getDomicilio() + " - "
+                               + c.getNif()+ " - "
+                               + c.getTipo()+ " - "
+                               + c.getIdCliente());
         }
     }
 

@@ -61,9 +61,9 @@ public class Cliente {
 
     public int getIdCliente() {return idCliente;}
     public void setIdCliente(int idCliente) {
-        System.out.println("id antes "+ idCliente +"/" + this.idCliente );
+        //System.out.println("id antes "+ idCliente +"/" + this.idCliente );
         this.idCliente = idCliente;
-        System.out.println("id despues "+ idCliente +"/" + this.idCliente );
+        //System.out.println("id despues "+ idCliente +"/" + this.idCliente );
 
     }
 

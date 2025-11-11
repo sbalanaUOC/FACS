@@ -54,8 +54,9 @@ public class OnlineStore {
 
     public static void añadirCliente(Cliente c) {
 
-        int temp = clienteDao.CreateWithIndex(c);
-        c.setIdCliente(temp);
+        clienteDao.CreateWithIndex(c);
+        //Integer temp = clienteDao.CreateWithIndex(c);
+        //c.setIdCliente(temp);
 
     }
 
@@ -85,7 +86,9 @@ public class OnlineStore {
 
 
     public void eliminarPedido(Pedido p) {
-        pedidoDao.Delete(p);
+
+        pedidoDao.DeleteWithID(p.getNum_pedido());
+        //pedidoDao.Delete(p);
       //    listadoPedidos.remove(p);
     }
 

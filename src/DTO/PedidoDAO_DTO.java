@@ -33,12 +33,24 @@ public class PedidoDAO_DTO implements PedidoDAO {
             stat.setInt(4,k.getCantidad());
             stat.setString(5, String.valueOf(k.getFecha()));
             stat.setString(6, String.valueOf(k.getEstado()));
+
+            //System.out.println("info: "+"/ "+ k.getNum_pedido()
+            //        +"/ "+ k.getCliente().getIdCliente()
+            //        +"/ "+ k.getArticulo().getCodigo()
+            //        +"/ "+ k.getCantidad()
+            //        +"/ "+ String.valueOf(k.getFecha())
+            //        +"/ "+ String.valueOf(k.getEstado())
+            //);
+
+
             stat.executeUpdate();
 
 
 
         } catch (SQLException ex) {
-
+            System.err.println("Error SQLState: " + ex.getSQLState());
+            System.err.println("Código de error: " + ex.getErrorCode());
+            System.err.println("Mensaje: " + ex.getMessage());
         } finally {
             if (stat != null) {
                 try {
@@ -77,6 +89,28 @@ public class PedidoDAO_DTO implements PedidoDAO {
             Connection conn = Conexion_MySQL.getConnection();
             stat = conn.prepareStatement(delete);
             stat.setInt(1,k.getNum_pedido());
+            stat.executeUpdate();
+
+
+        } catch (SQLException ex) {
+
+        } finally {
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (SQLException ex) {
+                }
+            }
+        }
+    }
+
+    public void DeleteWithID(Integer idPedido) {
+        PreparedStatement stat=null;
+        try {
+
+            Connection conn = Conexion_MySQL.getConnection();
+            stat = conn.prepareStatement(delete);
+            stat.setInt(1,idPedido);
             stat.executeUpdate();
 
 

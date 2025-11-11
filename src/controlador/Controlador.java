@@ -202,6 +202,7 @@ public class Controlador {
                 cliente_aux.setNombre(c.getNombre());
                 cliente_aux.setDomicilio(c.getDomicilio());
                 cliente_aux.setNif(c.getNif());
+                cliente_aux.setIdCliente(c.getIdCliente());
                 clienteencontrado=true;
                 break;
             }
@@ -213,6 +214,7 @@ public class Controlador {
                 cliente_aux.setNombre(c.getNombre());
                 cliente_aux.setDomicilio(c.getDomicilio());
                 cliente_aux.setNif(c.getNif());
+                cliente_aux.setIdCliente(c.getIdCliente());
                 clienteencontrado=true;
                 break;
             }

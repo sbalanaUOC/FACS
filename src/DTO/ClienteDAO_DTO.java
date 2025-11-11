@@ -30,13 +30,13 @@ public class ClienteDAO_DTO implements ClienteDAO {
 
             int filasInsercion=stat.executeUpdate();
             //stat.executeUpdate();
-            System.out.println("filas insertadas "+ filasInsercion );
+            System.out.println("cl in: "+ filasInsercion );
             if (filasInsercion > 0) {
                 ResultSet claves = stat.getGeneratedKeys();
                 if (claves.next()) {
                     idGenerado = claves.getInt(1);
                 }
-                System.out.println("idgenerado: " +idGenerado );
+                System.out.println("cl idgen: " +idGenerado );
             }
 
         } catch (SQLException ex) {
@@ -88,12 +88,7 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getInt("tipo")
                 );
                 clientes.add(c);
-                // Mueve el cursor a la siguiente fila, devuelve false si no hay más
-                //System.out.println("leo:  " + rs.getString("idcodigo"));
-                //System.out.println("leo:  " + rs.getString("descripcion"));
-                //System.out.println("leo:  " + rs.getFloat("precioventa"));
-                //System.out.println("leo:  " + rs.getFloat("gastosenvio"));
-                //System.out.println("leo:  " + rs.getInt("tiempopreparacion"));
+
             }
 
         } catch (SQLException e) {
