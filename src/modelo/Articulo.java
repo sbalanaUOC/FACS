@@ -9,7 +9,7 @@ public class Articulo {
     private float GastosEnvio;
     private int TiempoPreparacion;
 
-
+    public Articulo() {} // constructor vacío
 
     public Articulo(String codigo, String descripcion, float precioVenta, float gastosEnvio, int tiempoPreparacion) {
         Codigo = codigo;

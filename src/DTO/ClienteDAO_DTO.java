@@ -116,6 +116,7 @@ public class ClienteDAO_DTO implements ClienteDAO {
             while (rs.next()) {
                 Cliente c = new Cliente(
                         //rs.getInt("idcliente"),
+                        //rs.getInt("idcliente"),
                         rs.getString("email"),
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
@@ -164,7 +165,34 @@ public class ClienteDAO_DTO implements ClienteDAO {
         return clientes;
     }
 
+    public Cliente Read_ind(int idcliente){
+        Cliente cliente=null;
+        try {
+            Connection conn = Conexion_MySQL.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from cliente where idcliente="+idcliente);
+            ResultSet rs = ps.executeQuery();
 
+            while (rs.next()) {
+                Cliente c = new Cliente(
+                        //rs.getInt("idcliente"),
+                        rs.getString("email"),
+                        rs.getString("nombre"),
+                        rs.getString("domicilio"),
+                        rs.getString("nif"),
+                        rs.getInt("tipo")
+                );
+
+            }
+
+        } catch (SQLException e) {
+            // Manejar excepción
+        }
+// La conexión se cierra automáticamente aquí
+
+
+        return cliente;
+
+    }
 
 
 }

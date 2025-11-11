@@ -17,25 +17,25 @@ public class Vista {
     }
 
     public int mostrarMenuPrincipal() {
-        System.out.println("\n===== MENÚ PRINCIPAL ONLINE STORE =====");
-        System.out.println("\n------------------------");
-        System.out.println("\n--- GESTIÓN DE ARTÍCULOS ---");
+        System.out.println("===== MENÚ PRINCIPAL ONLINE STORE =====");
+        System.out.println("------------------------");
+        System.out.println("--- GESTIÓN DE ARTÍCULOS ---");
         System.out.println("11. Añadir artículo");
         System.out.println("12. Mostrar artículos");
-        System.out.println("\n------------------------");
-        System.out.println("\n--- GESTIÓN DE CLIENTES ---");
+        System.out.println("------------------------");
+        System.out.println("--- GESTIÓN DE CLIENTES ---");
         System.out.println("21. Añadir cliente");
         System.out.println("22. Mostrar clientes");
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("24. Mostrar Clietes Premium");
         System.out.println("\n------------------------");
-        System.out.println("\n--- GESTIÓN DE PEDIDOS ---");
+        System.out.println("--- GESTIÓN DE PEDIDOS ---");
         System.out.println("31. Añadir pedido");
         System.out.println("32. Eliminar pedido");
         System.out.println("33. Mostrar Pedidos pendientes");
         System.out.println("34. Mostrar Pedidos enviados");
-        System.out.println("\n------------------------");
-        System.out.println("\n------------------------");
+        System.out.println("------------------------");
+        System.out.println("------------------------");
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
         int opcion = sc.nextInt();
@@ -49,8 +49,8 @@ public class Vista {
         Articulo articulo = new Articulo("","",0,0,0);
 
         System.out.println("\n------------------------");
-        System.out.println("\nBienvenido al Menú de Añadir Articulo");
-        System.out.println("\n------------------------");
+        System.out.println("Bienvenido al Menú de Añadir Articulo");
+        System.out.println("------------------------");
         System.out.print("Ingrese el Codigo del producto: ");
         articulo.setCodigo(teclado.nextLine());
         System.out.print("Ingrese Descripcion del producto: ");
@@ -69,7 +69,7 @@ public class Vista {
     public void MostrarArticulos(ArrayList<Articulo> articulos){
         System.out.println("\n------------------------");
         System.out.println("12. Menu de Mostrar artículos");
-        System.out.println("\n------------------------");
+        System.out.println("------------------------");
         for (Articulo a : articulos) {
             System.out.println(a.getCodigo() + " - " + a.getDescripcion() + " - " + a.getPrecioVenta()+ " - " + a.getGastosEnvio()+ " - " + a.getTiempoPreparacion());
         }
@@ -82,8 +82,8 @@ public class Vista {
         String[] datos = new String[5]; // array para almacenar los 5 valores
 
         System.out.println("\n------------------------");
-        System.out.println("\nBienvenido al Menú de Añadir Cliente");
-        System.out.println("\n------------------------");
+        System.out.println("Bienvenido al Menú de Añadir Cliente");
+        System.out.println("------------------------");
         System.out.print("Ingrese el email del cliente: ");
          datos[0]= teclado.nextLine();
         System.out.print("Ingrese Nombre del cliente: ");
@@ -108,7 +108,7 @@ public class Vista {
         }
         System.out.println("\n------------------------");
         System.out.println("22. Mostrar clientes");
-        System.out.println("\n------------------------");
+        System.out.println("------------------------");
         for (Cliente c : clientes) {
             System.out.println(c.getNombre() + " - " + c.getDomicilio() + " - " + c.getNif()+ " - " + c.getTipo()+ " - " + c.getIdCliente());
         }
@@ -136,7 +136,7 @@ public class Vista {
         }
         System.out.println("\n------------------------");
         System.out.println("24. Mostrar Clientes Premium");
-        System.out.println("\n------------------------");
+        System.out.println("------------------------");
         for (Cliente cP : premium) {
             System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif()+" - " + cP.getTipo()+ " - " + cP.getIdCliente());
         }
@@ -149,8 +149,8 @@ public class Vista {
         String[] datospedido = new String[3]; // array para almacenar los 3 valores
 
         System.out.println("\n------------------------");
-        System.out.println("\nBienvenido al Menú de Añadir Pedido");
-        System.out.println("\n------------------------");
+        System.out.println("Bienvenido al Menú de Añadir Pedido");
+        System.out.println("------------------------");
         System.out.print("Ingrese el nombre del cliente: ");
         datospedido[0]= teclado.nextLine();
         System.out.print("Ingrese articulo del pedido: ");
@@ -173,8 +173,8 @@ public class Vista {
         String datospedido = "";
 
         System.out.println("\n------------------------");
-        System.out.println("\nBienvenido al Menú de Borrar Pedido");
-        System.out.println("\n------------------------");
+        System.out.println("Bienvenido al Menú de Borrar Pedido");
+        System.out.println("n------------------------");
         System.out.print("Ingrese el identificdor del pedido a borrar: ");
         datospedido= teclado.nextLine();
 
@@ -191,7 +191,7 @@ public class Vista {
     public void MostrarPedidosPendientes(ArrayList<Pedido> pendientes){
         System.out.println("\n------------------------");
         System.out.println("33. Mostrar Pedidos pendientes");
-        System.out.println("\n------33------------------");
+        System.out.println("------33------------------");
 
         for (Pedido p : pendientes) {
             System.out.println(" num: "+p.getNum_pedido() + " / cliente: " + p.getCliente() + " / articulo: " + p.getArticulo()+ " / cantidad: " + p.getCantidad()+ " / fecha: " + p.getFecha()+ " / estado: " + p.getEstado());
@@ -203,7 +203,7 @@ public class Vista {
     public void MostrarPedidosFinalizados(ArrayList<Pedido> finalizados){
         System.out.println("\n------------------------");
         System.out.println("34. Mostrar Pedidos enviados");
-        System.out.println("\n------------------------");
+        System.out.println("------------------------");
 
         for (Pedido f : finalizados) {
             System.out.println(" num: "+f.getNum_pedido() + " / cliente: " + f.getCliente() + " / articulo: " + f.getArticulo()+ " / cantidad: " + f.getCantidad()+ " / fecha: " + f.getFecha()+ " / estado: " + f.getEstado());

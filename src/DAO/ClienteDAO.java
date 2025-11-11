@@ -10,5 +10,5 @@ public interface ClienteDAO extends CRUD<Cliente,String>{
     ArrayList<Cliente> Read_STD();
     ArrayList<Cliente> Read_PRM();
 
-
+    Cliente Read_ind(int idcliente);
 }

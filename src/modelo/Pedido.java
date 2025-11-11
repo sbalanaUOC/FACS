@@ -24,6 +24,8 @@ public class Pedido {
         this.estado = estado;
     }
 
+
+
     public Pedido( Cliente cliente, Articulo articulo, int cantidad) {
         this.numpedido = ++contador;            //automatico
         this.cliente = cliente;
@@ -32,6 +34,8 @@ public class Pedido {
         this.fecha = LocalDateTime.now();       //automatico
         this.estado = EstadoPedido.Pendiente;   //automatico
     }
+
+
 
     //  getters y setters
     public int getNum_pedido() {

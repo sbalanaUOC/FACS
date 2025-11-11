@@ -40,7 +40,7 @@ public class OnlineStore {
     }
 
 
-    //*********************************************************************************************************************//
+    //***********************************************************************************************//
     public void añadirArticulo(Articulo a){
         articuloDao.Create(a);
         //listadoArticulos.add(a);
@@ -48,9 +48,9 @@ public class OnlineStore {
 
     public ArrayList<Articulo> getListadoArticulos()  {
         return articuloDao.Read_all();
-
     }
-//*********************************************************************************************************************//
+
+    //***********************************************************************************************//
 
     public static void añadirCliente(Cliente c) {
 
@@ -58,16 +58,6 @@ public class OnlineStore {
         c.setIdCliente(temp);
 
     }
-        // public static void añadirClienteEstandar(ClienteEstandar cS) {
-    //       // clienteDao.Create(cS);
-    //       //
-    //       //listadoClienteEstandar.add(cS);
-        //    }
-    //   public static void añadirClientePremium(ClientePremium cP) {
-    //        //
-    //        //clienteDao.Create(cP);
-    //       //listadoClientePremium.add(cP);
-    //    }
 
 
     public ArrayList<Cliente> getListadoClientes() {
@@ -105,11 +95,6 @@ public class OnlineStore {
 
 
 
-
-
-
-
-
     public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
         this.listadoClientes = listadoClientes;
     }
@@ -138,7 +123,7 @@ public class OnlineStore {
 
     public ArrayList<Pedido> getListadoPedidosPendientes() {
         ArrayList<Pedido> pendientes = new ArrayList<>();
-        for (Pedido p : listadoPedidos) {
+        for (Pedido p : pedidoDao.Read_all()) {
             if (p.getEstado().equals(EstadoPedido.Pendiente)) { // O si es boolean: if(p.isPendiente())
                 pendientes.add(p);
             }
@@ -148,7 +133,7 @@ public class OnlineStore {
 
     public ArrayList<Pedido> getListadoPedidosFinalizados() {
         ArrayList<Pedido> finalizados = new ArrayList<>();
-        for (Pedido p : listadoPedidos) {
+        for (Pedido p : pedidoDao.Read_all()) {
             if (p.getEstado().equals(EstadoPedido.Finalizado)) { // O si es boolean: if(p.isPendiente())
                 finalizados.add(p);
             }
@@ -157,8 +142,6 @@ public class OnlineStore {
     }
 
 
-
-    //Funciones
 
 
 

@@ -143,8 +143,8 @@ public class Controlador {
            if (usuarios[4].equals("1")) {
                 //System.out.println("El usuario eligió Standard");
                 Cliente cs = new Cliente(usuarios[0], usuarios[1], usuarios[2], usuarios[3],Integer.parseInt(usuarios[4]));
-
                 tienda.añadirCliente(cs);
+
 
             } else if (usuarios[4].equals("2")) {
                 //System.out.println("El usuario eligió Premium");
@@ -153,6 +153,7 @@ public class Controlador {
             } else {
                //
            }
+
     }
 
     //  opcion 22  Mostrar Clientes
