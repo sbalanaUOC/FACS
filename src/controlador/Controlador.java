@@ -232,16 +232,12 @@ public class Controlador {
 
         System.out.println("Cliente validado en BD: " + clienteBD.getNombre() + " (ID=" + clienteBD.getIdCliente() + ")");
 
-        // 🔹 Crear pedido con cliente real
+        // Crear pedido con cliente real
         Pedido pedido = new Pedido(clienteBD, articulo_aux, Integer.parseInt(resultado[2]));
         pedido.setEstado(EstadoPedido.Pendiente);
         pedido.setFecha(java.time.LocalDateTime.now());
 
-        // 🔹 Insertar pedido en BD
-        DTO.PedidoDAO_DTO pedidoDAO = new DTO.PedidoDAO_DTO();
-        pedidoDAO.Create(pedido);
-
-        // 🔹 Añadir a tienda en memoria
+        // Añadir a tienda en memoria
         tienda.añadirPedido(pedido);
 
         System.out.println("Pedido insertado correctamente.");
