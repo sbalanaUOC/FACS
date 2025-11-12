@@ -30,13 +30,13 @@ public class ClienteDAO_DTO implements ClienteDAO {
 
             int filasInsercion=stat.executeUpdate();
             //stat.executeUpdate();
-            System.out.println("cl in: "+ filasInsercion );
+            //System.out.println("cl in: "+ filasInsercion );
             if (filasInsercion > 0) {
                 ResultSet claves = stat.getGeneratedKeys();
                 if (claves.next()) {
                     idGenerado = claves.getInt(1);
                 }
-                System.out.println("cl idgen: " +idGenerado );
+                //System.out.println("cl idgen: " +idGenerado );
             }
 
         } catch (SQLException ex) {
@@ -63,6 +63,11 @@ public class ClienteDAO_DTO implements ClienteDAO {
     @Override
     public void Update(Cliente k) {}
 
+
+
+
+
+
     @Override
     public void Delete(Cliente k) {}
 
@@ -82,7 +87,9 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
-                        rs.getInt("tipo")
+                        rs.getInt("tipo"),
+                        rs.getInt("idcliente")
+
                 );
                 c.setIdCliente(rs.getInt("idcliente"));
                 clientes.add(c);
@@ -114,8 +121,10 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
-                        rs.getInt("tipo")
+                        rs.getInt("tipo"),
+                        rs.getInt("idcliente")
                 );
+                //System.out.println("clienteSTD devuelto: "+ c );
                 clientes.add(c);
 
             }
@@ -145,8 +154,10 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
-                        rs.getInt("tipo")
+                        rs.getInt("tipo"),
+                        rs.getInt("idcliente")
                 );
+                //System.out.println("clientePRM devuelto: "+ c );
                 clientes.add(c);
 
             }
@@ -176,7 +187,8 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
-                        rs.getInt("tipo")
+                        rs.getInt("tipo"),
+                        rs.getInt("idcliente")
                 );
                 cliente.setIdCliente(rs.getInt("idcliente")); // ✅ Asignamos el id real
             }

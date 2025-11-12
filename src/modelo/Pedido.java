@@ -26,10 +26,22 @@ public class Pedido {
 
 
 
+
     public Pedido( Cliente cliente, Articulo articulo, int cantidad) {
         this.numpedido = ++contador;            //automatico
         this.cliente = cliente;
         this.articulo = articulo;
+        this.cantidad = cantidad;
+        this.fecha = LocalDateTime.now();       //automatico
+        this.estado = EstadoPedido.Pendiente;   //automatico
+    }
+
+
+    public Pedido( Integer numeropedido,
+                           String nombrecliente, String nombrearticulo , int cantidad, String fecha, String estado) {
+        this.numpedido = numeropedido;            //automatico
+        this.cliente = null;
+        this.articulo = null;
         this.cantidad = cantidad;
         this.fecha = LocalDateTime.now();       //automatico
         this.estado = EstadoPedido.Pendiente;   //automatico

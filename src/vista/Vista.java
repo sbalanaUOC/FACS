@@ -17,6 +17,7 @@ public class Vista {
     }
 
     public int mostrarMenuPrincipal() {
+        System.out.println("\n\n\n------------------------");
         System.out.println("===== MENÚ PRINCIPAL ONLINE STORE =====");
         System.out.println("------------------------");
         System.out.println("--- GESTIÓN DE ARTÍCULOS ---");
@@ -129,7 +130,13 @@ public class Vista {
         System.out.println("23. Mostrar Clientes Stándar");
         System.out.println("\n------------------------");
         for (Cliente cS : estandar) {
-            System.out.println(cS.getNombre() + " - " + cS.getDomicilio() + " - " + cS.getNif()+ " - " + cS.getTipo()+ " - " + cS.getIdCliente());
+            System.out.println(cS.getEmail() + " - "
+                    +cS.getNombre() + " - "
+                    + cS.getDomicilio() + " - "
+                    + cS.getNif()+ " - "
+                    + cS.getTipo()+ " - "
+                    + cS.getIdCliente());
+
         }
     }
 
@@ -143,7 +150,12 @@ public class Vista {
         System.out.println("24. Mostrar Clientes Premium");
         System.out.println("------------------------");
         for (Cliente cP : premium) {
-            System.out.println(cP.getNombre() + " - " + cP.getDomicilio() + " - " + cP.getNif()+" - " + cP.getTipo()+ " - " + cP.getIdCliente());
+            System.out.println(cP.getEmail() + " - "
+                    +cP.getNombre() + " - "
+                    + cP.getDomicilio() + " - "
+                    + cP.getNif()+ " - "
+                    + cP.getTipo()+ " - "
+                    + cP.getIdCliente());
         }
     }
 
@@ -164,6 +176,7 @@ public class Vista {
         datospedido[2] = teclado.nextLine();
         //
         System.out.println("...Un momento por favor...");
+        System.out.println("------------------------------------------------------------");
 
         return datospedido;
     }
@@ -184,6 +197,7 @@ public class Vista {
         datospedido= teclado.nextLine();
 
         System.out.println("...Un momento por favor...");
+        System.out.println("------------------------------------------------------------");
 
         return datospedido;
     }
@@ -200,8 +214,9 @@ public class Vista {
 
         for (Pedido p : pendientes) {
             System.out.println(" num: "+p.getNum_pedido() + " / cliente: " + p.getCliente() + " / articulo: " + p.getArticulo()+ " / cantidad: " + p.getCantidad()+ " / fecha: " + p.getFecha()+ " / estado: " + p.getEstado());
-            System.out.println(" 33 ");
+            System.out.println("  ");
         }
+        System.out.println("------------------------------------------------------------");
     }
 
     // menu 34
@@ -212,8 +227,9 @@ public class Vista {
 
         for (Pedido f : finalizados) {
             System.out.println(" num: "+f.getNum_pedido() + " / cliente: " + f.getCliente() + " / articulo: " + f.getArticulo()+ " / cantidad: " + f.getCantidad()+ " / fecha: " + f.getFecha()+ " / estado: " + f.getEstado());
-            System.out.println(" 34 ");
+            System.out.println("  ");
         }
+        System.out.println("------------------------------------------------------------");
     }
 //
 //    char OpcionMenu() {
