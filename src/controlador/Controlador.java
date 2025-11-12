@@ -204,6 +204,7 @@ public class Controlador {
                 cliente_aux.setNif(c.getNif());
                 cliente_aux.setIdCliente(c.getIdCliente());
                 clienteencontrado=true;
+                //System.out.println("cl.." + c);
                 break;
             }
         }
@@ -216,6 +217,7 @@ public class Controlador {
                 cliente_aux.setNif(c.getNif());
                 cliente_aux.setIdCliente(c.getIdCliente());
                 clienteencontrado=true;
+                //System.out.println("cl.." + c);
                 break;
             }
         }
@@ -291,6 +293,8 @@ public class Controlador {
                 cliente_aux.setNombre(c.getNombre());
                 cliente_aux.setDomicilio(c.getDomicilio());
                 cliente_aux.setNif(c.getNif());
+                cliente_aux.setIdCliente(c.getIdCliente());
+
             }
         }
 
@@ -301,6 +305,7 @@ public class Controlador {
                 cliente_aux.setNombre(c.getNombre());
                 cliente_aux.setDomicilio(c.getDomicilio());
                 cliente_aux.setNif(c.getNif());
+                cliente_aux.setIdCliente(c.getIdCliente());
             }
         }
 
@@ -319,6 +324,7 @@ public class Controlador {
         modelo.Articulo articulo1 = new modelo.Articulo("art1","des1",111,11,1111);
         modelo.Articulo articulo2 = new modelo.Articulo("art2","des2",222,22,2222);
         modelo.Articulo articulo3 = new modelo.Articulo("art3","des3",333,33,3333);
+        modelo.Articulo articulo4 = new modelo.Articulo("art4","des4",444,44,4444);
 
         modelo.Pedido pedido1 = new modelo.Pedido(cliente1,articulo1,1,LocalDateTime.now(), EstadoPedido.Pendiente);
         modelo.Pedido pedido2 = new modelo.Pedido(cliente2,articulo2,2,LocalDateTime.now(),EstadoPedido.Pendiente);
@@ -332,18 +338,19 @@ public class Controlador {
         tienda.añadirArticulo(articulo1);
         tienda.añadirArticulo(articulo2);
         tienda.añadirArticulo(articulo3);
+        tienda.añadirArticulo(articulo4);
 
         tienda.añadirCliente(cliente1);
         tienda.añadirCliente(cliente2);
         tienda.añadirCliente(cliente3);
         tienda.añadirCliente(cliente4);
 
-        tienda.añadirPedido(pedido1);
-        tienda.añadirPedido(pedido2);
-        tienda.añadirPedido(pedido3);
-        tienda.añadirPedido(pedido4);
-        tienda.añadirPedido(pedido5);
-        tienda.añadirPedido(pedido6);
+        //tienda.añadirPedido(pedido1);
+        //tienda.añadirPedido(pedido2);
+        //tienda.añadirPedido(pedido3);
+        //tienda.añadirPedido(pedido4);
+        //tienda.añadirPedido(pedido5);
+        //tienda.añadirPedido(pedido6);
     }
 
 

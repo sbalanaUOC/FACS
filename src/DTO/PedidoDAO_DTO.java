@@ -18,13 +18,12 @@ public class PedidoDAO_DTO implements PedidoDAO {
     final String delete="DELETE FROM pedidos WHERE numeropedido = ?";
 
 
-
+//*****************************************************************************************
     @Override
     public void Create(Pedido k) {
         PreparedStatement stat=null;
         int idGenerado=0;
         try {
-            System.out.println("pedido "+ k );
             Connection conn = Conexion_MySQL.getConnection();
             stat = conn.prepareStatement(insert);
             stat.setInt(1,k.getNum_pedido());
@@ -34,18 +33,7 @@ public class PedidoDAO_DTO implements PedidoDAO {
             stat.setString(5, String.valueOf(k.getFecha()));
             stat.setString(6, String.valueOf(k.getEstado()));
 
-            //System.out.println("info: "+"/ "+ k.getNum_pedido()
-            //        +"/ "+ k.getCliente().getIdCliente()
-            //        +"/ "+ k.getArticulo().getCodigo()
-            //        +"/ "+ k.getCantidad()
-            //        +"/ "+ String.valueOf(k.getFecha())
-            //        +"/ "+ String.valueOf(k.getEstado())
-            //);
-
-
             stat.executeUpdate();
-
-
 
         } catch (SQLException ex) {
             System.err.println("Error SQLState: " + ex.getSQLState());
@@ -56,13 +44,9 @@ public class PedidoDAO_DTO implements PedidoDAO {
                 try {
                     stat.close();
                 } catch (SQLException ex) {
-
-
                 }
             }
-            ;
         }
-
     }
 
 

@@ -27,6 +27,18 @@ public class Cliente {
         this.idCliente=-1;
     }
 
+
+    public Cliente(String email, String nombre, String domicilio, String nif, Integer tipo, Integer idcliente) {
+        this.email = email;
+        this.nombre = nombre;
+        this.domicilio = domicilio;
+        this.nif = nif;
+        this.tipo =tipo;
+        this.idCliente=idcliente;
+    }
+
+
+
     //  Getters y Setters 
     public String getEmail() {
         return email;
