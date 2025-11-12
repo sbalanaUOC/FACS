@@ -70,33 +70,31 @@ public class ClienteDAO_DTO implements ClienteDAO {
 
     @Override
     public ArrayList<Cliente> Read_all() {
-        ArrayList<Cliente> clientes = null;
-        try {
-            Connection conn = Conexion_MySQL.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
-            ResultSet rs = ps.executeQuery();
+        ArrayList<Cliente> clientes = new ArrayList<>();
 
-            clientes = new ArrayList<>();
+        try (Connection conn = Conexion_MySQL.getConnection();
+             PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+             ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
                 Cliente c = new Cliente(
-                        //rs.getInt("idcliente"),
                         rs.getString("email"),
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
                         rs.getInt("tipo")
                 );
+                c.setIdCliente(rs.getInt("idcliente"));
                 clientes.add(c);
-
             }
 
         } catch (SQLException e) {
-            // Manejar excepción
+            e.printStackTrace();
         }
-// La conexión se cierra automáticamente aquí
+
         return clientes;
     }
+
 
 
     public ArrayList<Cliente> Read_STD() {
@@ -160,33 +158,34 @@ public class ClienteDAO_DTO implements ClienteDAO {
         return clientes;
     }
 
-    public Cliente Read_ind(int idcliente){
-        Cliente cliente=null;
-        try {
-            Connection conn = Conexion_MySQL.getConnection();
-            PreparedStatement ps = conn.prepareStatement("select * from cliente where idcliente="+idcliente);
+
+    @Override
+    public Cliente Read_ind(int idcliente) {
+        Cliente cliente = null;
+        String sql = "SELECT * FROM clientes WHERE idcliente = ?";
+
+        try (Connection conn = Conexion_MySQL.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, idcliente);
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
-                Cliente c = new Cliente(
-                        //rs.getInt("idcliente"),
+            if (rs.next()) {
+                cliente = new Cliente(
                         rs.getString("email"),
                         rs.getString("nombre"),
                         rs.getString("domicilio"),
                         rs.getString("nif"),
                         rs.getInt("tipo")
                 );
-
+                cliente.setIdCliente(rs.getInt("idcliente")); // ✅ Asignamos el id real
             }
 
         } catch (SQLException e) {
-            // Manejar excepción
+            e.printStackTrace();
         }
-// La conexión se cierra automáticamente aquí
-
 
         return cliente;
-
     }
 
 

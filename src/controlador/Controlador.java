@@ -185,68 +185,68 @@ public class Controlador {
     //  opcion 31  Insercion Pedidos
     public void AddPedido() {
 
-        //  opcion    Añadir pedido
-        Cliente cliente_aux=new Cliente("0","0","0","0",0);
-        Articulo articulo_aux=new Articulo("0","0",0,0,0);
-        //Cliente cliente_aux = null;
-        //Articulo articulo_aux = null;
-        boolean clienteencontrado=false;
-        boolean productoencontrado=false;
+        String[] resultado = vista.InfoPedido(); // [nombreCliente, codigoArticulo, cantidad]
+        boolean clienteEncontrado = false;
+        boolean productoEncontrado = false;
 
-        String[] resultado = vista.InfoPedido();
+        Cliente cliente_aux = null;
+        Articulo articulo_aux = null;
 
-        for (Cliente c : tienda.getListadoClienteEstandar()) {
-            //System.out.println("comparando..." + resultado[0] + "  con  "+c.getNombre());
-            if (c.getNombre().equals(resultado[0])) {
-                cliente_aux.setEmail(c.getEmail());
-                cliente_aux.setNombre(c.getNombre());
-                cliente_aux.setDomicilio(c.getDomicilio());
-                cliente_aux.setNif(c.getNif());
-                cliente_aux.setIdCliente(c.getIdCliente());
-                clienteencontrado=true;
+        // Buscar cliente en memoria
+        for (Cliente c : tienda.getListadoClientes()) {
+            if (c.getNombre().equalsIgnoreCase(resultado[0])) {
+                cliente_aux = c;
+                clienteEncontrado = true;
                 break;
             }
         }
-        for (Cliente c : tienda.getListadoClientePremium()) {
-            //System.out.println("comparando..." + resultado[0] + "  con  "+c.getNombre());
-            if (c.getNombre().equals(resultado[0])) {
-                cliente_aux.setEmail(c.getEmail());
-                cliente_aux.setNombre(c.getNombre());
-                cliente_aux.setDomicilio(c.getDomicilio());
-                cliente_aux.setNif(c.getNif());
-                cliente_aux.setIdCliente(c.getIdCliente());
-                clienteencontrado=true;
-                break;
-            }
-        }
+
+        // Buscar artículo en memoria
         for (Articulo a : tienda.getListadoArticulos()) {
-            //System.out.println("comparando..." + resultado[1] + "  con  "+a.getCodigo());
-            if (a.getCodigo().equals(resultado[1])) {
-                articulo_aux.setCodigo(a.getCodigo());
-                articulo_aux.setDescripcion(a.getDescripcion());
-                articulo_aux.setPrecioVenta(a.getPrecioVenta());
-                articulo_aux.setGastosEnvio(a.getGastosEnvio());
-                articulo_aux.setTiempoPreparacion(a.getTiempoPreparacion());
-                productoencontrado=true;
+            if (a.getCodigo().equalsIgnoreCase(resultado[1])) {
+                articulo_aux = a;
+                productoEncontrado = true;
                 break;
             }
         }
 
-        if (productoencontrado==true) {
-            if (clienteencontrado == false){
-                addClientes();
-            }
-           // BuscarCliente(resultado[0]);
-            Pedido pd = new Pedido(BuscarCliente(resultado[0]), articulo_aux, Integer.parseInt(resultado[2]));
-           // System.out.println("Se añade pedido: " + resultado[0] +  articulo_aux + Integer.parseInt(resultado[2]));
-            tienda.añadirPedido(pd);
-        }else{
-            System.out.println("Error el producto no existe. inicie el Proceso de Insercion");
-
+        if (!productoEncontrado) {
+            System.out.println("Error: el producto no existe. Inicie el proceso de inserción.");
+            return;
         }
 
+        if (!clienteEncontrado) {
+            System.out.println("Cliente no encontrado en memoria, añádelo primero.");
+            addClientes();
+            return;
+        }
 
+        // Buscar cliente real desde la BD por su ID
+        DTO.ClienteDAO_DTO clienteDAO = new DTO.ClienteDAO_DTO();
+        Cliente clienteBD = clienteDAO.Read_ind(cliente_aux.getIdCliente());
+
+        if (clienteBD == null) {
+            System.err.println("El cliente con ID " + cliente_aux.getIdCliente() + " no existe en la base de datos.");
+            return;
+        }
+
+        System.out.println("Cliente validado en BD: " + clienteBD.getNombre() + " (ID=" + clienteBD.getIdCliente() + ")");
+
+        // 🔹 Crear pedido con cliente real
+        Pedido pedido = new Pedido(clienteBD, articulo_aux, Integer.parseInt(resultado[2]));
+        pedido.setEstado(EstadoPedido.Pendiente);
+        pedido.setFecha(java.time.LocalDateTime.now());
+
+        // 🔹 Insertar pedido en BD
+        DTO.PedidoDAO_DTO pedidoDAO = new DTO.PedidoDAO_DTO();
+        pedidoDAO.Create(pedido);
+
+        // 🔹 Añadir a tienda en memoria
+        tienda.añadirPedido(pedido);
+
+        System.out.println("Pedido insertado correctamente.");
     }
+
 
 
     //  opcion 32  Eliminar Pedidos
@@ -309,42 +309,25 @@ public class Controlador {
 
 
     //**************************************************************************
-    public void ValoresInicio(){
+    public void ValoresInicio() {
+        // Cargar clientes reales desde la BD
+        DTO.ClienteDAO_DTO clienteDAO = new DTO.ClienteDAO_DTO();
+        ArrayList<modelo.Cliente> clientesBD = clienteDAO.Read_all();
 
-        modelo.Cliente cliente1 = new modelo.ClienteEstandar("111@kkk.com","name1","dom1","nif1",1);
-        modelo.Cliente cliente2 = new modelo.ClienteEstandar("222@kkk.com","name2","dom2","nif2",1);
-        modelo.Cliente cliente3 = new modelo.ClientePremium("3333@kkk.com","name3","dom3","nif3",2);
-        modelo.Cliente cliente4 = new modelo.ClientePremium("4444@kkk.com","name4","dom4","nif4",2);
+        for (modelo.Cliente c : clientesBD) {
+            tienda.añadirCliente(c);
+        }
 
+        // Cargar artículos de ejemplo
         modelo.Articulo articulo1 = new modelo.Articulo("art1","des1",111,11,1111);
         modelo.Articulo articulo2 = new modelo.Articulo("art2","des2",222,22,2222);
         modelo.Articulo articulo3 = new modelo.Articulo("art3","des3",333,33,3333);
 
-        modelo.Pedido pedido1 = new modelo.Pedido(cliente1,articulo1,1,LocalDateTime.now(), EstadoPedido.Pendiente);
-        modelo.Pedido pedido2 = new modelo.Pedido(cliente2,articulo2,2,LocalDateTime.now(),EstadoPedido.Pendiente);
-        modelo.Pedido pedido3 = new modelo.Pedido(cliente3,articulo3,3,LocalDateTime.now(),EstadoPedido.Finalizado);
-        modelo.Pedido pedido4 = new modelo.Pedido(cliente1,articulo1,1);
-        modelo.Pedido pedido5 = new modelo.Pedido(cliente2,articulo2,2);
-        modelo.Pedido pedido6 = new modelo.Pedido(cliente3,articulo3,3);
-
-
-
         tienda.añadirArticulo(articulo1);
         tienda.añadirArticulo(articulo2);
         tienda.añadirArticulo(articulo3);
-
-        tienda.añadirCliente(cliente1);
-        tienda.añadirCliente(cliente2);
-        tienda.añadirCliente(cliente3);
-        tienda.añadirCliente(cliente4);
-
-        tienda.añadirPedido(pedido1);
-        tienda.añadirPedido(pedido2);
-        tienda.añadirPedido(pedido3);
-        tienda.añadirPedido(pedido4);
-        tienda.añadirPedido(pedido5);
-        tienda.añadirPedido(pedido6);
     }
+
 
 
 
