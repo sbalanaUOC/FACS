@@ -1,5 +1,6 @@
 package DTO;
 
+import DAO.ArticuloDAO;
 import DAO.ClienteDAO;
 import DAO.Conexion_MySQL;
 import modelo.Cliente;
@@ -171,15 +172,19 @@ public class ClienteDAO_DTO implements ClienteDAO {
         return clientes;
     }
 
-    public Cliente Read_ind(int idcliente){
+    public Cliente Read_id(int idcliente){
         Cliente cliente=null;
         try {
             Connection conn = Conexion_MySQL.getConnection();
-            PreparedStatement ps = conn.prepareStatement("select * from cliente where idcliente="+idcliente);
+            PreparedStatement ps = conn.prepareStatement("select * from cliente where idcliente=" + idcliente);
             ResultSet rs = ps.executeQuery();
 
+            System.out.println("idcliente:  " + idcliente);
+
+
+            Cliente c = null;
             while (rs.next()) {
-                Cliente c = new Cliente(
+                 c = new Cliente(
                         //rs.getInt("idcliente"),
                         rs.getString("email"),
                         rs.getString("nombre"),
@@ -190,6 +195,9 @@ public class ClienteDAO_DTO implements ClienteDAO {
                 );
 
             }
+
+            cliente = c;
+            System.out.println("cliente:  " + cliente);
 
         } catch (SQLException e) {
             // Manejar excepción

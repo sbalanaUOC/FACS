@@ -1,5 +1,7 @@
 package DTO;
 
+import DAO.ArticuloDAO;
+import DAO.ClienteDAO;
 import DAO.PedidoDAO;
 import DAO.Conexion_MySQL;
 import modelo.Articulo;
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 
 public class PedidoDAO_DTO implements PedidoDAO {
 
-    //final String insert ="insert into pedidos (idcliente,idcodigoarticulo,cantidad,fecha,estadopedido) VALUES (5,"art3",4,"date","Pendiente");";
-    final String insert =" insert into pedidos (numeropedido,idcliente,idcodigoarticulo,cantidad,fecha,estadopedido) VALUES (?,?,?,?,?,?)";
+
+    final String insert =" insert into pedidos (idcliente,idcodigoarticulo,cantidad,fecha,estadopedido) VALUES (?,?,?,?,?)";
     final String readall="select * from pedidos;";
     final String delete="DELETE FROM pedidos WHERE numeropedido = ?";
 
@@ -26,12 +28,12 @@ public class PedidoDAO_DTO implements PedidoDAO {
         try {
             Connection conn = Conexion_MySQL.getConnection();
             stat = conn.prepareStatement(insert);
-            stat.setInt(1,k.getNum_pedido());
-            stat.setInt(2,k.getCliente().getIdCliente());
-            stat.setString(3,k.getArticulo().getCodigo());
-            stat.setInt(4,k.getCantidad());
-            stat.setString(5, String.valueOf(k.getFecha()));
-            stat.setString(6, String.valueOf(k.getEstado()));
+            //stat.setInt(1,k.getNum_pedido());
+            stat.setInt(1,k.getCliente().getIdCliente());
+            stat.setString(2,k.getArticulo().getCodigo());
+            stat.setInt(3,k.getCantidad());
+            stat.setString(4, String.valueOf(k.getFecha()));
+            stat.setString(5, String.valueOf(k.getEstado()));
 
             stat.executeUpdate();
 
@@ -48,22 +50,19 @@ public class PedidoDAO_DTO implements PedidoDAO {
             }
         }
     }
-
-
-    @Override
-    public int CreateWithIndex(Pedido k) {
-       return 0;
-    }
+//*****************************************************************************************
 
     @Override
-    public Pedido Read() {
-        return null;
-    }
+    public int CreateWithIndex(Pedido k) {return 0;}
 
     @Override
-    public void Update(Pedido k) {
-    }
+    public Pedido Read() {return null;}
 
+    @Override
+    public void Update(Pedido k) {}
+
+
+    //*****************************************************************************************
     @Override
     public void Delete(Pedido k) {
         PreparedStatement stat=null;
@@ -88,6 +87,7 @@ public class PedidoDAO_DTO implements PedidoDAO {
         }
     }
 
+    //*****************************************************************************************
     public void DeleteWithID(Integer idPedido) {
         PreparedStatement stat=null;
         try {
@@ -109,6 +109,12 @@ public class PedidoDAO_DTO implements PedidoDAO {
             }
         }
     }
+//*****************************************************************************************
+
+
+
+
+
 
 
     @Override
@@ -116,6 +122,10 @@ public class PedidoDAO_DTO implements PedidoDAO {
         ArrayList<Pedido> pedidos = null;
         Cliente cliente=null;
         Articulo articulo=null;
+
+        ArticuloDAO_DTO art_Dao=new ArticuloDAO_DTO();
+        ClienteDAO_DTO cli_Dao=new ClienteDAO_DTO();
+
 
         try {
             Connection conn = Conexion_MySQL.getConnection();
@@ -126,8 +136,31 @@ public class PedidoDAO_DTO implements PedidoDAO {
 
             while (rs.next()) {
 
+               int numeropedido= rs.getInt("numeropedido");
+               int idcliente=rs.getInt("idcliente");
+               String idcodigoarticulo= rs.getString("idcodigoarticulo");
+               int  cantidad= rs.getInt("cantidad");
+               String fecha= rs.getString("fecha");
+               String estadopedido= rs.getString("estadopedido");
+
+               // Obtener los objetos completos
+                System.out.println("pedido:  "
+                        + " / "+numeropedido
+                        + " / "+idcliente
+                        + " / "+idcodigoarticulo
+                        + " / "+cantidad
+                        + " / "+fecha
+                        + " / "+estadopedido
 
 
+
+
+
+                );
+                Cliente cli = cli_Dao.Read_id(idcliente);
+                Articulo art = art_Dao.Read_id(idcodigoarticulo);
+                System.out.println("clie:  " + cli);
+                System.out.println("arti:  " + art);
 
             }
 
@@ -138,6 +171,16 @@ public class PedidoDAO_DTO implements PedidoDAO {
         return pedidos;
 
     }
+
+
+
+
+
+
+
+
+
+
 
     public ArrayList<Tablapedido> Read_Tabla() {
 

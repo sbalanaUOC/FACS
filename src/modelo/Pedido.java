@@ -16,7 +16,8 @@ public class Pedido {
 
 
     public Pedido( Cliente cliente, Articulo articulo, int cantidad, LocalDateTime fecha, EstadoPedido estado) {
-        this.numpedido = ++contador;
+        //this.numpedido = ++contador;
+        this.numpedido = -1;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;
@@ -28,7 +29,8 @@ public class Pedido {
 
 
     public Pedido( Cliente cliente, Articulo articulo, int cantidad) {
-        this.numpedido = ++contador;            //automatico
+        //this.numpedido = ++contador;            //automatico
+        this.numpedido = -1;
         this.cliente = cliente;
         this.articulo = articulo;
         this.cantidad = cantidad;

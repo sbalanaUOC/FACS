@@ -270,10 +270,12 @@ public class Controlador {
         vista.MostrarPedidosPendientes(tienda.getListadoPedidosPendientes());
     }
 
+
     //  opcion 34   Mostrar Pedidos pendientes
     public void MostrarFinalizados(){
         vista.MostrarPedidosFinalizados(tienda.getListadoPedidosFinalizados());
     }
+
 
     //  opcion 35   Mostrar Todos Pedidos (modo admin)
     public void MostrarTodosPedidos() {

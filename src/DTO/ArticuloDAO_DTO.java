@@ -4,6 +4,7 @@ import DAO.ArticuloDAO;
 import modelo.Articulo;
 
 import DAO.Conexion_MySQL;
+import modelo.Cliente;
 
 import java.sql.*;
 
@@ -106,6 +107,43 @@ public class ArticuloDAO_DTO implements ArticuloDAO {
 
 
     }
+
+    public Articulo Read_id(String idarticulo){
+        Articulo articulo=null;
+        try {
+            Connection conn = Conexion_MySQL.getConnection();
+            PreparedStatement ps = conn.prepareStatement("select * from articulo where idcodigo="+idarticulo);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Articulo a = new Articulo(
+                        //rs.getInt("idcliente"),
+                        rs.getString("idcodigo"),
+                        rs.getString("descripcion"),
+                        rs.getFloat("precioventa"),
+                        rs.getFloat("gastosenvio"),
+                        rs.getInt("tiempopreparacion")
+
+                );
+            articulo=a;
+            System.out.println("art:  " + articulo);
+
+            }
+
+        } catch (SQLException e) {
+            // Manejar excepción
+        }
+// La conexión se cierra automáticamente aquí
+
+
+        return articulo;
+
+    }
+
+
+
+
+
 
 
 }

@@ -124,18 +124,20 @@ public class OnlineStore {
     }
 
 
+
+
     public ArrayList<Pedido> getListadoPedidosPendientes() {
         ArrayList<Pedido> pendientes = new ArrayList<>();
-        for (Tablapedido tp : pedidoDao.Read_Tabla()) {
-                 Pedido p = null;
-
-
+        for (Pedido p : pedidoDao.Read_all()) {
+            System.out.println("pedido:  " + p);
             if (p.getEstado().equals(EstadoPedido.Pendiente)) { // O si es boolean: if(p.isPendiente())
                 pendientes.add(p);
             }
         }
         return pendientes;
     }
+
+
 
     public ArrayList<Pedido> getListadoPedidosFinalizados() {
         ArrayList<Pedido> finalizados = new ArrayList<>();
@@ -145,6 +147,7 @@ public class OnlineStore {
             }
         }
         return finalizados;
+
     }
 
 
