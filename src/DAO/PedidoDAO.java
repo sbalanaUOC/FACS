@@ -13,5 +13,6 @@ public interface PedidoDAO extends CRUD<Pedido,String>{
 
     void DeleteWithID (Integer idPedido);
 
-    ArrayList<Tablapedido> Read_Tabla();
+    ArrayList<Pedido> ReadTable();
+
 }

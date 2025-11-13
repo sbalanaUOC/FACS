@@ -41,6 +41,7 @@ public class OnlineStore {
 
 
     //***********************************************************************************************//
+    //FUNCIONES DE ARTICULO
     public void añadirArticulo(Articulo a){
         articuloDao.Create(a);
         //listadoArticulos.add(a);
@@ -51,7 +52,8 @@ public class OnlineStore {
     }
 
     //***********************************************************************************************//
-
+    //***********************************************************************************************//
+    //FUNCIONES DE cLIENTE
     public static void añadirCliente(Cliente c) {
 
         clienteDao.CreateWithIndex(c);
@@ -65,7 +67,6 @@ public class OnlineStore {
         return clienteDao.Read_all();
     }
 
-
     public ArrayList<Cliente> getListadoClienteEstandar(){
         return clienteDao.Read_STD();
        // return listadoClienteEstandar;
@@ -77,7 +78,7 @@ public class OnlineStore {
 
 //*********************************************************************************************************************//
 //*********************************************************************************************************************//
-
+//FUNCIONES DE PEDIDO
 
     public void añadirPedido(Pedido p) {
         pedidoDao.Create(p);
@@ -87,49 +88,16 @@ public class OnlineStore {
 
     public void eliminarPedido(Pedido p) {
 
-        pedidoDao.DeleteWithID(p.getNum_pedido());
-        //pedidoDao.Delete(p);
-      //    listadoPedidos.remove(p);
+        if (p.getEstado().equals(EstadoPedido.Pendiente)) { // O si es boolean: if(p.isPendiente())
+            pedidoDao.DeleteWithID(p.getNum_pedido());
+        }
+
     }
-
-
-
-
-
-
-
-    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
-        this.listadoClientes = listadoClientes;
-    }
-    public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {
-        this.listadoClienteEstandar = listadoClienteEstandar;
-    }
-    public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {
-        this.listadoClientePremium = listadoClientePremium;
-    }
-    public ArrayList<Pedido> getListadoPedidos() {
-        return listadoPedidos;
-    }
-    public void setListadoPedidos(ArrayList<Pedido> listadoPedidos) {
-        this.listadoPedidos = listadoPedidos;
-    }
-
-
-
-
-
-
-    public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
-        this.listadoArticulos = listadoArticulos;
-    }
-
-
 
 
     public ArrayList<Pedido> getListadoPedidosPendientes() {
         ArrayList<Pedido> pendientes = new ArrayList<>();
-        for (Pedido p : pedidoDao.Read_all()) {
-            System.out.println("pedido:  " + p);
+        for (Pedido p : pedidoDao.ReadTable()) {
             if (p.getEstado().equals(EstadoPedido.Pendiente)) { // O si es boolean: if(p.isPendiente())
                 pendientes.add(p);
             }
@@ -141,7 +109,7 @@ public class OnlineStore {
 
     public ArrayList<Pedido> getListadoPedidosFinalizados() {
         ArrayList<Pedido> finalizados = new ArrayList<>();
-        for (Pedido p : pedidoDao.Read_all()) {
+        for (Pedido p : pedidoDao.ReadTable()) {
             if (p.getEstado().equals(EstadoPedido.Finalizado)) { // O si es boolean: if(p.isPendiente())
                 finalizados.add(p);
             }
@@ -151,6 +119,27 @@ public class OnlineStore {
     }
 
 
+    //***********************************************************************************************//
+    //***********************************************************************************************//
+
+
+    public void setListadoClientes(ArrayList<Cliente> listadoClientes) {
+        this.listadoClientes = listadoClientes;
+    }
+    public void setListadoClienteEstandar(ArrayList<ClienteEstandar> listadoClienteEstandar) {this.listadoClienteEstandar = listadoClienteEstandar;}
+    public void setListadoClientePremium(ArrayList<ClientePremium> listadoClientePremium) {this.listadoClientePremium = listadoClientePremium;}
+
+    public ArrayList<Pedido> getListadoPedidos() {
+        return listadoPedidos;
+    }
+    public void setListadoPedidos(ArrayList<Pedido> listadoPedidos) {
+        this.listadoPedidos = listadoPedidos;
+    }
+
+
+    public void setListadoArticulos(ArrayList<Articulo> listadoArticulos) {
+        this.listadoArticulos = listadoArticulos;
+    }
 
 
 

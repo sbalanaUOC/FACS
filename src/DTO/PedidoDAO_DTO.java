@@ -4,12 +4,10 @@ import DAO.ArticuloDAO;
 import DAO.ClienteDAO;
 import DAO.PedidoDAO;
 import DAO.Conexion_MySQL;
-import modelo.Articulo;
-import modelo.Cliente;
-import modelo.Pedido;
-import modelo.Tablapedido;
+import modelo.*;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PedidoDAO_DTO implements PedidoDAO {
@@ -66,7 +64,7 @@ public class PedidoDAO_DTO implements PedidoDAO {
     @Override
     public void Delete(Pedido k) {
         PreparedStatement stat=null;
-        System.out.println("borra:  " + k);
+        //System.out.println("borra:  " + k);
         try {
 
             Connection conn = Conexion_MySQL.getConnection();
@@ -182,40 +180,63 @@ public class PedidoDAO_DTO implements PedidoDAO {
 
 
 
-    public ArrayList<Tablapedido> Read_Tabla() {
-
-        ArrayList<Tablapedido> pedidos = null;
 
 
-        try {
-            Connection conn = Conexion_MySQL.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+    public ArrayList<Pedido> ReadTable() {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+
+        //String sql = "SELECT p.numeropedido, p.cantidad, p.fecha, p.estadopedido, c.idcliente, c.email, c.nombre, c.domicilio, c.nif, c.tipo,a.idcodigo, a.descripcion, a.precioventa, a.gastosenvio, a.tiempopreparacion FROM pedidos p JOIN clientes c ON p.idcliente = c.idcliente JOIN articulos a ON p.idcodigoarticulo = a.idcodigo WHERE p.estadopedido = "+ estado +" ORDER BY p.numeropedido;";
+        String sql = "SELECT p.numeropedido, p.cantidad, p.fecha, p.estadopedido, " +
+                     "c.idcliente, c.email, c.nombre, c.domicilio, c.nif, c.tipo," +
+                     "a.idcodigo, a.descripcion, a.precioventa, a.gastosenvio, a.tiempopreparacion " +
+                     "FROM pedidos p JOIN clientes c ON p.idcliente = c.idcliente JOIN articulos a ON p.idcodigoarticulo = a.idcodigo  ORDER BY p.numeropedido;";
+
+
+
+
+        try (Connection conn = Conexion_MySQL.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            //ps.setString(1, estado);
             ResultSet rs = ps.executeQuery();
 
-            pedidos = new ArrayList<>();
-
             while (rs.next()) {
-                Tablapedido tp = new Tablapedido(
-
-                        rs.getInt("numeropedido"),
-                        rs.getString("idcliente"),
-                        rs.getString("idcodigoarticulo"),
-                        rs.getInt("cantidad"),
-                        rs.getString("fecha"),
-                        rs.getString("estadopedido")
-
+                Cliente cliente = new Cliente(
+                        rs.getString("email"),
+                        rs.getString("nombre"),
+                        rs.getString("domicilio"),
+                        rs.getString("nif"),
+                        rs.getInt("tipo")
                 );
-                pedidos.add(tp);
+                cliente.setIdCliente(rs.getInt("idcliente"));
 
+                Articulo articulo = new Articulo(
+                        rs.getString("idcodigo"),
+                        rs.getString("descripcion"),
+                        rs.getFloat("precioventa"),
+                        rs.getFloat("gastosenvio"),
+                        rs.getInt("tiempopreparacion")
+                );
+
+                Pedido pedido = new Pedido(cliente, articulo, rs.getInt("cantidad"));
+                pedido.setNum_pedido(rs.getInt("numeropedido"));
+                pedido.setFecha(LocalDateTime.parse(rs.getString("fecha").replace(" ", "T")));
+                pedido.setEstado(EstadoPedido.valueOf(rs.getString("estadopedido")));
+
+                pedidos.add(pedido);
             }
 
         } catch (SQLException e) {
-            // Manejar excepción
+            e.printStackTrace();
         }
-// La conexión se cierra automáticamente aquí
-        return pedidos;
 
+        return pedidos;
     }
+
+
+
+
+
 
 
 }

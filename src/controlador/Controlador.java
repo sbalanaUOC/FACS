@@ -158,10 +158,7 @@ public class Controlador {
 
     //  opcion 22  Mostrar Clientes
     public void MostrarCLientes() {
-       // ArrayList<modelo.ClienteEstandar> clientessd = tienda.getListadoClienteEstandar();
-       // vista.MostrarClientesStandard(clientessd);
-       // ArrayList<modelo.ClientePremium> clientespr = tienda.getListadoClientePremium();
-       // vista.MostrarClientesPremium(clientespr);
+
         ArrayList<modelo.Cliente> clientes = tienda.getListadoClientes();
         vista.MostrarClientes(clientes);
 
@@ -209,7 +206,6 @@ public class Controlador {
             }
         }
         for (Cliente c : tienda.getListadoClientePremium()) {
-            //System.out.println("comparando..." + resultado[0] + "  con  "+c.getNombre());
             if (c.getNombre().equals(resultado[0])) {
                 cliente_aux.setEmail(c.getEmail());
                 cliente_aux.setNombre(c.getNombre());
@@ -222,7 +218,6 @@ public class Controlador {
             }
         }
         for (Articulo a : tienda.getListadoArticulos()) {
-            //System.out.println("comparando..." + resultado[1] + "  con  "+a.getCodigo());
             if (a.getCodigo().equals(resultado[1])) {
                 articulo_aux.setCodigo(a.getCodigo());
                 articulo_aux.setDescripcion(a.getDescripcion());
@@ -240,14 +235,11 @@ public class Controlador {
             }
            // BuscarCliente(resultado[0]);
             Pedido pd = new Pedido(BuscarCliente(resultado[0]), articulo_aux, Integer.parseInt(resultado[2]));
-           // System.out.println("Se añade pedido: " + resultado[0] +  articulo_aux + Integer.parseInt(resultado[2]));
-            tienda.añadirPedido(pd);
+           tienda.añadirPedido(pd);
         }else{
             System.out.println("Error el producto no existe. inicie el Proceso de Insercion");
 
         }
-
-
     }
 
 
@@ -289,7 +281,7 @@ public class Controlador {
         Cliente cliente_aux=new Cliente("0","0","0","0",0);
         //
         for (Cliente c : tienda.getListadoClienteEstandar()) {
-            //System.out.println("2a vuelta..." + name + "  con  "+c.getNombre());
+
             if (c.getNombre().equals(name)) {
                 cliente_aux.setEmail(c.getEmail());
                 cliente_aux.setNombre(c.getNombre());
@@ -301,7 +293,7 @@ public class Controlador {
         }
 
         for (Cliente c : tienda.getListadoClientePremium()) {
-            //System.out.println("2a vuelta..." + name + "  con  "+c.getNombre());
+
             if (c.getNombre().equals(name)) {
                 cliente_aux.setEmail(c.getEmail());
                 cliente_aux.setNombre(c.getNombre());
@@ -347,12 +339,6 @@ public class Controlador {
         tienda.añadirCliente(cliente3);
         tienda.añadirCliente(cliente4);
 
-        //tienda.añadirPedido(pedido1);
-        //tienda.añadirPedido(pedido2);
-        //tienda.añadirPedido(pedido3);
-        //tienda.añadirPedido(pedido4);
-        //tienda.añadirPedido(pedido5);
-        //tienda.añadirPedido(pedido6);
     }
 
 

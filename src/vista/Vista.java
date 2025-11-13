@@ -209,8 +209,8 @@ public class Vista {
     // menu 33
     public void MostrarPedidosPendientes(ArrayList<Pedido> pendientes){
         System.out.println("\n------------------------");
-        System.out.println("33. Mostrar Pedidos pendientes");
-        System.out.println("------33------------------");
+        System.out.println("33. Mostrar Pedidos PENDIENTES");
+        System.out.println("------------------------");
 
         for (Pedido p : pendientes) {
             System.out.println(" num: "+p.getNum_pedido() + " / cliente: " + p.getCliente() + " / articulo: " + p.getArticulo()+ " / cantidad: " + p.getCantidad()+ " / fecha: " + p.getFecha()+ " / estado: " + p.getEstado());
@@ -222,7 +222,7 @@ public class Vista {
     // menu 34
     public void MostrarPedidosFinalizados(ArrayList<Pedido> finalizados){
         System.out.println("\n------------------------");
-        System.out.println("34. Mostrar Pedidos enviados");
+        System.out.println("34. Mostrar Pedidos FINALIZADOS");
         System.out.println("------------------------");
 
         for (Pedido f : finalizados) {
