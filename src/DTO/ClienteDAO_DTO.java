@@ -190,7 +190,7 @@ public class ClienteDAO_DTO implements ClienteDAO {
                         rs.getInt("tipo"),
                         rs.getInt("idcliente")
                 );
-                cliente.setIdCliente(rs.getInt("idcliente")); // ✅ Asignamos el id real
+                cliente.setIdCliente(rs.getInt("idcliente"));
             }
 
         } catch (SQLException e) {
