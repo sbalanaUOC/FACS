@@ -126,7 +126,10 @@ public class OnlineStore {
 
     public ArrayList<Pedido> getListadoPedidosPendientes() {
         ArrayList<Pedido> pendientes = new ArrayList<>();
-        for (Pedido p : pedidoDao.Read_all()) {
+        for (Tablapedido tp : pedidoDao.Read_Tabla()) {
+                 Pedido p = null;
+
+
             if (p.getEstado().equals(EstadoPedido.Pendiente)) { // O si es boolean: if(p.isPendiente())
                 pendientes.add(p);
             }

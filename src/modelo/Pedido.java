@@ -37,15 +37,6 @@ public class Pedido {
     }
 
 
-    public Pedido( Integer numeropedido,
-                           String nombrecliente, String nombrearticulo , int cantidad, String fecha, String estado) {
-        this.numpedido = numeropedido;            //automatico
-        this.cliente = null;
-        this.articulo = null;
-        this.cantidad = cantidad;
-        this.fecha = LocalDateTime.now();       //automatico
-        this.estado = EstadoPedido.Pendiente;   //automatico
-    }
 
 
 

@@ -1,11 +1,11 @@
 package DTO;
 
-import DAO.ClienteDAO;
 import DAO.PedidoDAO;
 import DAO.Conexion_MySQL;
 import modelo.Articulo;
 import modelo.Cliente;
 import modelo.Pedido;
+import modelo.Tablapedido;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -125,17 +125,44 @@ public class PedidoDAO_DTO implements PedidoDAO {
             pedidos = new ArrayList<>();
 
             while (rs.next()) {
-                cliente = new Cliente();
-                articulo = new Articulo();
 
-                //PEDIDO= cliente  articulo  cantidad  fecha  estado
-                Pedido p = new Pedido(
 
-                                   cliente,
-                                   articulo,
-                                   rs.getInt("cantidad")
+
+
+            }
+
+        } catch (SQLException e) {
+            // Manejar excepción
+        }
+// La conexión se cierra automáticamente aquí
+        return pedidos;
+
+    }
+
+    public ArrayList<Tablapedido> Read_Tabla() {
+
+        ArrayList<Tablapedido> pedidos = null;
+
+
+        try {
+            Connection conn = Conexion_MySQL.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes");
+            ResultSet rs = ps.executeQuery();
+
+            pedidos = new ArrayList<>();
+
+            while (rs.next()) {
+                Tablapedido tp = new Tablapedido(
+
+                        rs.getInt("numeropedido"),
+                        rs.getString("idcliente"),
+                        rs.getString("idcodigoarticulo"),
+                        rs.getInt("cantidad"),
+                        rs.getString("fecha"),
+                        rs.getString("estadopedido")
+
                 );
-                pedidos.add(p);
+                pedidos.add(tp);
 
             }
 
