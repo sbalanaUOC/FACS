@@ -5,9 +5,11 @@ import DAO.PedidoDAO;
 import DAO.Conexion_MySQL;
 import modelo.Articulo;
 import modelo.Cliente;
+import modelo.EstadoPedido;
 import modelo.Pedido;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class PedidoDAO_DTO implements PedidoDAO {
@@ -102,6 +104,57 @@ public class PedidoDAO_DTO implements PedidoDAO {
                 }
             }
         }
+    }
+
+    public ArrayList<Pedido> ReadByEstado(String estado) {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+
+        String sql = "    SELECT p.numeropedido, p.cantidad, p.fecha, p.idestadopedido,\n" +
+                     "           c.idcliente, c.email, c.nombre, c.domicilio, c.nif, c.tipo,\n" +
+                     "           a.idcodigo, a.descripcion, a.precioventa, a.gastosenvio, a.tiempopreparacion\n" +
+                     "    FROM pedidos p\n" +
+                     "    JOIN clientes c ON p.idcliente = c.idcliente\n" +
+                     "    JOIN articulos a ON p.idcodigoarticulo = a.idcodigo\n" +
+                     "    WHERE p.idestadopedido = ?\n" +
+                     "    ORDER BY p.numeropedido;\n";
+
+        try (Connection conn = Conexion_MySQL.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, estado);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente(
+                        rs.getString("email"),
+                        rs.getString("nombre"),
+                        rs.getString("domicilio"),
+                        rs.getString("nif"),
+                        rs.getInt("tipo")
+                );
+                cliente.setIdCliente(rs.getInt("idcliente"));
+
+                Articulo articulo = new Articulo(
+                        rs.getString("idcodigo"),
+                        rs.getString("descripcion"),
+                        rs.getFloat("precioventa"),
+                        rs.getFloat("gastosenvio"),
+                        rs.getInt("tiempopreparacion")
+                );
+
+                Pedido pedido = new Pedido(cliente, articulo, rs.getInt("cantidad"));
+                pedido.setNum_pedido(rs.getInt("numeropedido"));
+                pedido.setFecha(LocalDateTime.parse(rs.getString("fecha").replace(" ", "T")));
+                pedido.setEstado(EstadoPedido.valueOf(rs.getString("idestadopedido")));
+
+                pedidos.add(pedido);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return pedidos;
     }
 
 

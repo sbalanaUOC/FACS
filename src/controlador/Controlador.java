@@ -260,14 +260,17 @@ public class Controlador {
 
 
     //  opcion 33   Mostrar Pedidos pendientes
-    public void MostrarPendientes(){
-        vista.MostrarPedidosPendientes(tienda.getListadoPedidosPendientes());
+    public void MostrarPendientes() {
+        DTO.PedidoDAO_DTO pedidoDAO = new DTO.PedidoDAO_DTO();
+        vista.MostrarPedidosPendientes(pedidoDAO.ReadByEstado("Pendiente"));
     }
 
     //  opcion 34   Mostrar Pedidos pendientes
-    public void MostrarFinalizados(){
-        vista.MostrarPedidosFinalizados(tienda.getListadoPedidosFinalizados());
+    public void MostrarFinalizados() {
+        DTO.PedidoDAO_DTO pedidoDAO = new DTO.PedidoDAO_DTO();
+        vista.MostrarPedidosFinalizados(pedidoDAO.ReadByEstado("Finalizado"));
     }
+
 
     //  opcion 35   Mostrar Todos Pedidos (modo admin)
     public void MostrarTodosPedidos() {
