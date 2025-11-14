@@ -1,13 +1,13 @@
 package modelo;
 import java.util.ArrayList;
 
-import DAO.ArticuloDAO;
-import DAO.ClienteDAO;
-import DAO.PedidoDAO;
+import modelo.DAO.ArticuloDAO;
+import modelo.DAO.ClienteDAO;
+import modelo.DAO.PedidoDAO;
 
-import DTO.ArticuloDAO_DTO;
-import DTO.ClienteDAO_DTO;
-import DTO.PedidoDAO_DTO;
+import modelo.DTO.ArticuloDAO_DTO;
+import modelo.DTO.ClienteDAO_DTO;
+import modelo.DTO.PedidoDAO_DTO;
 
 public class OnlineStore {
 

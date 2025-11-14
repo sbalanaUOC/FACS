@@ -1,9 +1,7 @@
-package DTO;
+package modelo.DTO;
 
-import DAO.ArticuloDAO;
-import DAO.ClienteDAO;
-import DAO.PedidoDAO;
-import DAO.Conexion_MySQL;
+import modelo.DAO.PedidoDAO;
+import modelo.DAO.Conexion_MySQL;
 import modelo.*;
 
 import java.sql.*;

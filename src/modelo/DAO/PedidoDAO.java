@@ -1,9 +1,7 @@
-package DAO;
+package modelo.DAO;
 
 
-import modelo.Cliente;
 import modelo.Pedido;
-import modelo.Tablapedido;
 
 import java.util.ArrayList;
 
