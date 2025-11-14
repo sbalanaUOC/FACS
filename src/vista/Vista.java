@@ -216,7 +216,7 @@ public class Vista {
             System.out.println(" num: "+p.getNum_pedido() + " / cliente: " + p.getCliente() + " / articulo: " + p.getArticulo()+ " / cantidad: " + p.getCantidad()+ " / fecha: " + p.getFecha()+ " / estado: " + p.getEstado());
             System.out.println("  ");
         }
-        System.out.println("------------------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
     }
 
     // menu 34
